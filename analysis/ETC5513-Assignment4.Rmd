@@ -46,6 +46,22 @@ library(ggplot2)
 
 \section*{Crime analysis by State and Territory}
 
+```{r library}
+library(tidyverse)
+library(readxl)
+```
+
+
+```{r read in data2}
+state <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 2, range = "A6:I115")
+```
+
+```{r filtering}
+glimpse(state)
+state1 <- state %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+```
+
 # Conclusion
 
 # Reference
