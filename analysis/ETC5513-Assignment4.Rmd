@@ -60,60 +60,74 @@ library(readr)
 ```{r library}
 library(tidyverse)
 library(readxl)
+library(dplyr)
 ```
 
 ```{r import_data4}
 NSW <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 2, range = "A6:L57") %>% 
-  dplyr::filter(!is.na(`Principal offence`)) 
+  dplyr::filter(!is.na(`Principal offence`))
 NSW <- NSW[c(16,32,48),2:12]
-NSW <- t(NSW)
+NSW <-t(NSW) %>% as.data.frame()
 colnames(NSW) <- c("Court", "Non_Court", "Total")
+NSW$States <- "NSW"
 
 VIC <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 3, range = "A6:L57") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 VIC <- VIC[c(16,32,48),2:12]
-VIC <- t(VIC) 
+VIC <- t(VIC) %>% as.data.frame()
 colnames(VIC) <- c("Court", "Non_Court", "Total")
+VIC$States <- "VIC"
 
 QLD <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 4, range = "A6:L57") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 QLD <- QLD[c(16,32,48),2:12]
-QLD <- t(QLD) 
+QLD <- t(QLD) %>% as_data_frame()
 colnames(QLD) <- c("Court", "Non_Court", "Total")
+QLD$States <- "QLD"
+rownames(QLD) <- rownames(VIC)
 
 SA <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 5, range = "A6:L57") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 SA <- SA[c(16,32,48),2:12]
-SA <- t(SA) 
+SA <- t(SA) %>% as.data.frame()
 colnames(SA) <- c("Court", "Non_Court", "Total")
+SA$States <- "SA"
 
 TAS <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 6, range = "A6:L57") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 TAS <- TAS[c(16,32,48),2:12]
-TAS <- t(TAS) 
-colnames(TAS) <- c("Court", "Non_Court", "Total")
+TAS <- t(TAS) %>% as.data.frame()
+colnames(TAS) <- c("Court", "Non_Court", "Total") 
+TAS$States <- "TAS"
 
 NT <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 7, range = "A6:L22") %>% 
   dplyr::filter(!is.na(`Principal offence`))
-NT <- NT[c(16),2:12]
-NT <- t(NT) 
+NT <- NT[c(16),2:12] 
+NT <- t(NT) %>% as.data.frame()
 colnames(NT) <- c("Total")
+NT$Court <- as.factor (NA)
+NT$Non_Court <-as.factor(NA)
+NT$States <- "NT"
+NT$Total <-as.factor(NT$Total)
+NT <- NT %>% select(Court, Non_Court, Total, States)
 
 ACT <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 8, range = "A6:L57") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 ACT <- ACT[c(16,32,48),2:12]
-ACT <- t(ACT) 
+ACT <- t(ACT) %>% as.data.frame()
 colnames(ACT) <- c("Court", "Non_Court", "Total")
+ACT$States <- "ACT"
+
+data <- bind_rows(NSW, VIC, QLD, SA, TAS, ACT, NT)
 ```
 
 ```{r plot}
-ggplot(ACT, aes(x = "Total",y =)) +
-  geom_line()
+
 ```
