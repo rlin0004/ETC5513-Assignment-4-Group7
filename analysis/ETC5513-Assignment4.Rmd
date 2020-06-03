@@ -46,8 +46,64 @@ library(ggplot2)
 
 \section*{body 3}
 
-\section*{body 4}
+\section*{Police Proceedings}
+```{r}
+library(readr)
 
+
+```
 # Conclusion
 
 # Reference
+
+
+```{r library}
+library(tidyverse)
+library(readxl)
+```
+
+```{r read in data4}
+NSW <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+                      sheet = 2, range = "A6:L39") %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+NSW <- NSW[-16,]
+NSW$State <- "NSW"
+
+VIC <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+                      sheet = 3, range = "A6:L39") %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+VIC <- VIC[-16,]
+VIC$State <- "VIC"
+
+QLD <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+                      sheet = 4, range = "A6:L39") %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+QLD <- QLD[-16,]
+QLD$State <- "QLD"
+
+SA <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+                      sheet = 5, range = "A6:L39") %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+AS <- SA[-16,]
+SA$State <- "SA"
+
+TAS <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+                      sheet = 6, range = "A6:L39") %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+TAS <- TAS[-16,]
+TAS$State <- "TAS"
+
+NT <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+                      sheet = 7, range = "A6:L39") %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+NT <- NT[-16,]
+NT$State <- "NT"
+
+ACT <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+                      sheet = 8, range = "A6:L39") %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+ACT <- ACT[-16,]
+ACT$State <- "ACT"
+```
+
+
