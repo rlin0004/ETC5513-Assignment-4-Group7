@@ -44,7 +44,7 @@ library(ggplot2)
 
 \section*{body 2}
 
-\section*{body 3}
+\section*{Crime analysis by State and Territory}
 
 # Conclusion
 
