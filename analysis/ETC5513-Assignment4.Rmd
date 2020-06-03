@@ -46,6 +46,8 @@ library(ggplot2)
 
 \section*{body 3}
 
+\section*{body 4}
+
 # Conclusion
 
 # Reference
