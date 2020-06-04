@@ -49,19 +49,225 @@ library(ggplot2)
 ```{r library}
 library(tidyverse)
 library(readxl)
+library(lubridate)
 ```
 
-
-```{r read in data2}
-state <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 2, range = "A6:I115")
+```{r nsw-cleaning}
+nsw <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 3, range = "A6:L39")
 ```
 
-```{r filtering}
-glimpse(state)
-state1 <- state %>% 
+```{r nsw-cleaning1}
+nsw <- nsw %>% 
   dplyr::filter(!is.na(`Principal offence`))
+
+nsw <- nsw[-c(16),] 
+
 ```
 
+```{r nsw-cleaning2}
+nsw <- nsw %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("NSW", 30))
+
+nsw$`2008–09` = as.double(nsw$`2008–09`)
+
+nsw1 <- nsw %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+
+```{r}
+vic <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 4, range = "A6:L39")
+```
+
+```{r vic-cleaning1}
+vic <- vic %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+vic <- vic[-c(16),] 
+
+```
+
+```{r vic-cleaning2}
+vic <- vic %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("VIC", 30))
+
+vic$`2008–09` = as.double(vic$`2008–09`)
+
+vic1 <- vic %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+
+
+```{r qld-cleaning}
+qld <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 5, range = "A6:L39")
+```
+
+```{r vic-cleaning1}
+qld <- qld %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+qld <- qld[-c(16),] 
+
+```
+
+
+```{r qld-cleaning2}
+qld <- qld %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("QLD", 30))
+
+qld$`2008–09` = as.double(qld$`2008–09`)
+
+qld1 <- qld %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+
+
+```{r}
+sa <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 6, range = "A6:L39")
+```
+
+```{r sa-cleaning1}
+sa <- sa %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+sa <- sa[-c(16),] 
+
+```
+
+```{r sa-cleaning2}
+sa <- sa %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("SA", 30))
+
+sa$`2008–09` = as.double(sa$`2008–09`)
+
+sa1 <- sa %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+
+
+```{r}
+wa <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 7, range = "A6:L39")
+```
+
+```{r wa-cleaning1}
+wa <- wa %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+wa <- wa[-c(16),] 
+
+```
+
+```{r wa-cleaning2}
+wa <- wa %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("WA", 30))
+
+wa$`2008–09` = as.double(wa$`2008–09`)
+
+wa1 <- wa %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+
+```{r}
+tas <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 8, range = "A6:L39")
+```
+
+```{r tas-cleaning1}
+tas <- tas %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+tas <- tas[-c(16),] 
+
+```
+
+```{r tas-cleaning2}
+tas <- tas %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("TAS", 30))
+
+tas$`2008–09` = as.double(tas$`2008–09`)
+
+tas1 <- tas %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r}
+nt <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 9, range = "A6:L39")
+```
+
+```{r nt-cleaning1}
+nt <- nt %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+nt <- nt[-c(16),] 
+
+```
+
+```{r tas-cleaning2}
+nt <- nt %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("NT", 30))
+
+nt$`2008–09` = as.double(nt$`2008–09`)
+
+nt1 <- nt %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r}
+act <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 10, range = "A6:L39")
+```
+
+```{r act-cleaning1}
+act <- act %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+act <- act[-c(16),] 
+
+```
+
+```{r tas-cleaning2}
+act <- act %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("ACT", 30))
+
+act$`2008–09` = as.double(act$`2008–09`)
+
+act1 <- act %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
 # Conclusion
 
 # Reference
