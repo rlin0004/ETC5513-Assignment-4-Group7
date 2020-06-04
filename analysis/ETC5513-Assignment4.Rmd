@@ -327,6 +327,16 @@ state_crime <- full_join(
          "cases" = "cases"))
 state_crime$Year = as.factor(state_crime$Year)
 ```
+
+```{r}
+graph1 <- state_crime %>%
+  group_by(state) %>%
+  ggplot(aes(state, cases,
+             colour = state,
+             fill = state)) +
+  geom_col()
+graph1
+```
 # Conclusion
 
 # Reference
