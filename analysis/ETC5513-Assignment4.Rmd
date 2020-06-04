@@ -268,6 +268,65 @@ act1 <- act %>%
                values_to = "cases") %>%
    mutate(Year = year(as.Date(Year, "%Y")))
 ```
+
+```{r join1}
+join1 <- full_join(
+  nsw1,
+  vic1,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join2 <- full_join(
+  qld1,
+  sa1,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join3 <- full_join(
+  wa1,
+  tas1,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join4 <- full_join(
+  nt1,
+  act1,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join5 <- full_join(
+  join1,
+  join2,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join6 <- full_join(
+  join3,
+  join4,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+state_crime <- full_join(
+  join5,
+  join6,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+state_crime$Year = as.factor(state_crime$Year)
+```
 # Conclusion
 
 # Reference
