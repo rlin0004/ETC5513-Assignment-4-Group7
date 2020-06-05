@@ -44,6 +44,8 @@ library(lubridate)
 # Analysis
 
 \section*{body 1}
+
+\section*{body 2}
 ```{r reading-data}
 crime_age_201819 <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 4, range = "A5:M21")
 
@@ -69,8 +71,6 @@ crime_age_201819_2 <- crime_age_201819 %>%
                values_to = "Number of Offences")
 
 ```
-
-\section*{body 2}
 
 \section*{body 3}
 
