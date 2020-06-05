@@ -46,8 +46,9 @@ library(here)
 \section*{body 1}
 
 ```{r read gender data}
-gender <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 3, col_types = c("text", rep("numeric", 22))) %>%
-  rename("2008" = ...2,
+gender_raw <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 3, col_types = c("text", rep("numeric", 22))) %>%
+  rename("offence_type" = `Australian Bureau of Statistics`,
+         "2008" = ...2,
          "2009" = ...3,
          "2010" = ...4,
          "2011" = ...5,
@@ -61,12 +62,69 @@ gender <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 3, 
 ```
 
 ```{r}
-male_count <- gender[7:22, 1:12] %>%
-  mutate(sex = "male") 
-female_count <- gender[24:39, 1:12] %>%
+male_count <- gender_raw[7:22, 1:12] %>%
+  mutate(sex = "male")
+female_count <- gender_raw[24:39, 1:12] %>%
   mutate(sex = "female") 
-both_count <- gender[41:56, 1:12] %>%
+both_count <- gender_raw[41:56, 1:12] %>%
   mutate(sex = "both") 
+
+gender <- bind_rows(male_count, female_count, both_count) %>%
+  pivot_longer(cols = -c(offence_type, sex),
+               names_to = "year",
+               values_to = "count")
+```
+
+```{r}
+gender %>%
+  filter(sex != "both",
+         offence_type != "Total") %>%
+  group_by(year, offence_type, sex) %>%
+  summarise(mean_year = mean(count, na.rm = TRUE)) %>%
+  ggplot(aes(x = mean_year, y = offence_type)) +
+  geom_col() +
+  facet_wrap(~sex) +
+  ylab("Offence Types") +
+  xlab("Average annual Records")
+```
+
+```{r, fig.width=8}
+gender %>%
+   filter(sex != "both",
+          offence_type != "Total") %>%
+  ggplot(aes(x = year, y = count, group = offence_type, color = offence_type)) +
+  geom_line() +
+  facet_wrap(~sex)
+```
+
+```{r}
+gender %>%
+  pivot_wider(names_from = sex, values_from = count) %>%
+  select(- both) %>%
+  group_by(offence_type) %>%
+  summarise(avg_male = mean(male, na.rm = TRUE),
+            avg_female = mean(female, na.rm = TRUE)) %>%
+  mutate(result = if_else(
+    condition = avg_male > avg_female,
+    true = paste0("Males are ", round(avg_male / avg_female, 2), " times higher than females"),
+    false = paste0("Females are ", round(avg_female / avg_male, 2), " times higher than males")
+  ))
+  
+```
+
+```{r}
+gender %>%
+   filter(sex != "both",
+          offence_type != "Total") %>%
+  group_by(year, offence_type, sex) %>%
+  summarise(mean_year = mean(count, na.rm = TRUE)) %>%
+  ggplot(aes(x = offence_type, y = mean_year, fill = sex)) +
+  geom_bar(stat = "identity", position = "fill") +
+  scale_fill_brewer(palette="Paired") +
+  geom_hline(yintercept = 0.50, color = "red") +
+  theme(legend.position = "bottom") +
+  coord_flip()
+  
 ```
 
 
