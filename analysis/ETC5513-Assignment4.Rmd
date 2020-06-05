@@ -33,6 +33,9 @@ output:
 knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
 # Make sure you have the latest versions of rmarkdown and bookdown installed
 library(ggplot2)
+library(tidyverse)
+library(readxl)
+library(lubridate)
 ```
 
 
@@ -41,6 +44,31 @@ library(ggplot2)
 # Analysis
 
 \section*{body 1}
+```{r reading-data}
+crime_age_201819 <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 4, range = "A5:M21")
+
+crime_age_201718 <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 4, range = "A5:M38") 
+crime_age_201718 <- crime_age_201718[-c(1:18),]
+```
+
+```{r age-data-cleaning}
+crime_age_201819 <- crime_age_201819 %>%
+  filter(!is.na(`Principal offence`))
+
+crime_age_201718$`10–14 years` = as.double(crime_age_201718$`10–14 years`)
+crime_age_201819$`10–14 years` = as.double(crime_age_201819$`10–14 years`)
+
+crime_age_201718_2 <- crime_age_201718 %>%
+  pivot_longer(cols = -`Principal offence`,
+               names_to = "Age group",
+               values_to = "Number of Offences")
+
+crime_age_201819_2 <- crime_age_201819 %>%
+  pivot_longer(cols = -`Principal offence`,
+               names_to = "Age group",
+               values_to = "Number of Offences")
+
+```
 
 \section*{body 2}
 
