@@ -46,13 +46,27 @@ library(here)
 \section*{body 1}
 
 ```{r read gender data}
-gender <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 3)
+gender <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 3, col_types = c("text", rep("numeric", 22))) %>%
+  rename("2008" = ...2,
+         "2009" = ...3,
+         "2010" = ...4,
+         "2011" = ...5,
+         "2012" = ...6,
+         "2013" = ...7,
+         "2014" = ...8,
+         "2015" = ...9,
+         "2016" = ...10,
+         "2017" = ...11,
+         "2018" = ...12) 
 ```
 
 ```{r}
-male <- gender[4:22,]
-female <- bind_rows(gender[4:5,], gender[23:39,])
-both <- bind_rows(gender[4:5,], gender[40:56,])
+male_count <- gender[7:22, 1:12] %>%
+  mutate(sex = "male") 
+female_count <- gender[24:39, 1:12] %>%
+  mutate(sex = "female") 
+both_count <- gender[41:56, 1:12] %>%
+  mutate(sex = "both") 
 ```
 
 
