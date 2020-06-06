@@ -360,38 +360,39 @@ vic_crime2018 <- state_crime %>%
                 Year == "2018")
 ```
 
-```{r}
+```{r nsw, fig.cap = "NSW crime 2018"}
 nsw_crime2018 %>%
   ggplot(aes(`Principal offence`, cases)) +
   geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
   theme(axis.text.x = element_blank()) +
   ggtitle("NSW crime 2018")
 ```
+\ The figure \@ref(fig:nsw) demonstrates that 02 Acts intended to cause injury takes the largest proportion in NSW's 2018 crime statistics.
 
-```{r}
+```{r qld, fig.cap="QLD crime 2018"}
 qld_crime2018 %>%
   ggplot(aes(`Principal offence`, cases)) +
   geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
   theme(axis.text.x = element_blank()) +
   ggtitle("QLD crime 2018")
 ```
-
-```{r}
+\ The figure \@ref(fig:qld) demonstrates that 10 Illicit drug offences takes the largest proportion in QLD's 2018 crime statistics.
+```{r sa, fig.cap="SA crime 2018"}
 sa_crime2018 %>%
   ggplot(aes(`Principal offence`, cases)) +
   geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
   theme(axis.text.x = element_blank()) +
   ggtitle("SA crime 2018")
 ```
-
-```{r}
+\ The figure \@ref(fig:sa) also represents the outstanding proportion of 10 Illicit drug offences in South Australia's 2018 crime statistics.
+```{r vic, fig.cap="VIC crime 2018"}
 vic_crime2018 %>%
   ggplot(aes(`Principal offence`, cases)) +
   geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
   theme(axis.text.x = element_blank()) +
   ggtitle("VIC crime 2018")
 ```
-
+\ In the figure \@ref(fig:vic), 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
 
 
 \section*{body 4}
