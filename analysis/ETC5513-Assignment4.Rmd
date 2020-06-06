@@ -124,7 +124,6 @@ gender %>%
   geom_hline(yintercept = 0.50, color = "red") +
   theme(legend.position = "bottom") +
   coord_flip()
-  
 ```
 
 
