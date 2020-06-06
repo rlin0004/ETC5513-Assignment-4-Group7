@@ -50,6 +50,7 @@ library(ggplot2)
 library(tidyverse)
 library(readxl)
 library(lubridate)
+library(gridExtra)
 ```
 
 ```{r nsw-cleaning}
@@ -358,6 +359,40 @@ vic_crime2018 <- state_crime %>%
   dplyr::filter(state == "VIC",
                 Year == "2018")
 ```
+
+```{r}
+nsw_crime2018 %>%
+  ggplot(aes(`Principal offence`, cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("NSW crime 2018")
+```
+
+```{r}
+qld_crime2018 %>%
+  ggplot(aes(`Principal offence`, cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("QLD crime 2018")
+```
+
+```{r}
+sa_crime2018 %>%
+  ggplot(aes(`Principal offence`, cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("SA crime 2018")
+```
+
+```{r}
+vic_crime2018 %>%
+  ggplot(aes(`Principal offence`, cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("VIC crime 2018")
+```
+
+
 
 \section*{body 4}
 
