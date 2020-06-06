@@ -52,7 +52,7 @@ library(readxl)
 library(lubridate)
 library(gridExtra)
 ```
-
+\ In this section, we are exploring the Australian crime statistics between states/territories. The analysis will be exploring which state has the highest crime rates, and what principal offence accounts for a large proportion.
 ```{r nsw-cleaning}
 nsw <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 3, range = "A6:L39")
 ```
