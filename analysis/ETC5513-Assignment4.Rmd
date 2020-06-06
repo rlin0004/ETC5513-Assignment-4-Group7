@@ -5,8 +5,8 @@ author:
   othernames: xxxxx
   address: Monash University
   correspondingauthor: true
-- familyname: xxx
-  othernames: xxx
+- familyname: Evangelina
+  othernames: Helen
   address: Monash University
 - familyname: xxx
   othernames: xxx
@@ -102,7 +102,7 @@ combined_age %>%
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
   ylab("Total Number of Offences") +
   xlab("Age Group") +
-  labs(title = "Distribution of Offences by Age Group")
+  labs(title = "Distribution of Offenders by Age Group")
 ```
 
 ```{r creating-graph2}
@@ -116,7 +116,7 @@ combined_age %>%
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
   ylab("Total Number of Offences") +
   xlab("Age Group") +
-  labs(title = "Distribution of Offences by Age Group") 
+  labs(title = "Distribution of Offenders by Age Group") 
 ```
 
 ```{r creating-graph2}
@@ -130,7 +130,7 @@ combined_age %>%
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
   ylab("Total Number of Offences") +
   xlab("Age Group") +
-  labs(title = "Distribution of Offences by Age Group") +
+  labs(title = "Distribution of Offenders by Age Group") +
   facet_wrap(~age_group)
 ```
 
