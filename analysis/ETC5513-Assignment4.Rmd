@@ -57,6 +57,7 @@ crime_age_201718 <- crime_age_201718[-c(1:18),]
 crime_age_201819 <- crime_age_201819 %>%
   filter(!is.na(`Principal offence`))
 
+#so that the data can be pivoted longer
 crime_age_201718$`10–14 years` = as.double(crime_age_201718$`10–14 years`)
 crime_age_201819$`10–14 years` = as.double(crime_age_201819$`10–14 years`)
 
@@ -65,11 +66,72 @@ crime_age_201718_2 <- crime_age_201718 %>%
                names_to = "Age group",
                values_to = "Number of Offences")
 
+crime_age_201718_2$Year <- "2017-2018"
+
 crime_age_201819_2 <- crime_age_201819 %>%
   pivot_longer(cols = -`Principal offence`,
                names_to = "Age group",
-               values_to = "Number of Offences")
+               values_to = "Number of Offences") 
 
+crime_age_201819_2$Year <- "2018-2019"
+
+```
+
+```{r binding-rows}
+combined_age <- crime_age_201819_2 %>%
+  bind_rows(crime_age_201718_2)
+
+#changing column names
+combined_age <- combined_age %>%
+  rename("principal_offence" = `Principal offence`,
+         "age_group" = `Age group`, 
+         "number_offences" = `Number of Offences`)
+
+combined_age$number_offences = as.numeric(combined_age$number_offences)
+
+```
+
+```{r creating-graph}
+combined_age %>% 
+  group_by(age_group) %>%
+  summarise(total = sum(number_offences)) %>%
+  ggplot() +
+  geom_col(aes(x = age_group,
+             y= total,
+             fill = age_group)) +
+  theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
+  ylab("Total Number of Offences") +
+  xlab("Age Group") +
+  labs(title = "Distribution of Offences by Age Group")
+```
+
+```{r creating-graph2}
+combined_age %>% 
+  group_by(age_group, Year) %>%
+  summarise(total = sum(number_offences)) %>%
+  ggplot() +
+  geom_col(aes(x = age_group,
+             y= total,
+             fill = Year)) +
+  theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
+  ylab("Total Number of Offences") +
+  xlab("Age Group") +
+  labs(title = "Distribution of Offences by Age Group") 
+```
+
+```{r creating-graph2}
+combined_age %>% 
+  group_by(age_group, Year) %>%
+  summarise(total = sum(number_offences)) %>%
+  ggplot() +
+  geom_col(aes(x = Year,
+             y= total,
+             fill = Year)) +
+  theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
+  ylab("Total Number of Offences") +
+  xlab("Age Group") +
+  labs(title = "Distribution of Offences by Age Group") +
+  facet_wrap(~age_group)
 ```
 
 \section*{body 3}
