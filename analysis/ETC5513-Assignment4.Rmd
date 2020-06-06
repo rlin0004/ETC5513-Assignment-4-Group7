@@ -328,16 +328,36 @@ state_crime <- full_join(
 state_crime$Year = as.factor(state_crime$Year)
 ```
 
-```{r}
-graph1 <- state_crime %>%
+```{r graph1, fig.cap="state-crime"}
+state_crime %>%
   group_by(state) %>%
   ggplot(aes(state, cases,
              colour = state,
              fill = state)) +
   geom_col()
-graph1
+
 ```
 \ The figure above demonstrates high crime cases recorded by NSW, QLD, SA, VIC and WA. However, the high number of crime cases recorded in these states may due to its high population compared to other states/territories like ACT, NT and TAS.
+
+\ Next, We'd like to look into the frequency of the principal offence in 2018 for top 4 crime-level states. (NSW, QLD, SA and VIC)
+
+```{r}
+nsw_crime2018 <- state_crime %>%
+  dplyr::filter(state == "NSW",
+                Year == "2018")
+
+qld_crime2018 <- state_crime %>%
+  dplyr::filter(state == "QLD",
+                Year == "2018")
+
+sa_crime2018 <- state_crime %>%
+  dplyr::filter(state == "SA",
+                Year == "2018")
+
+vic_crime2018 <- state_crime %>%
+  dplyr::filter(state == "VIC",
+                Year == "2018")
+```
 
 \section*{body 4}
 
