@@ -339,6 +339,8 @@ graph1
 ```
 \ The figure above demonstrates high crime cases recorded by NSW, QLD, SA, VIC and WA. However, the high number of crime cases recorded in these states may due to its high population compared to other states/territories like ACT, NT and TAS.
 
+\section*{body 4}
+
 # Conclusion
 
 # Reference
