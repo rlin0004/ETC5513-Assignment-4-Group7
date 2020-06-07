@@ -153,30 +153,25 @@ gender_rate <- bind_rows(male_rate, female_rate, both_rate) %>%
 gender_rate %>%
   filter(offence_type == "Total") %>%
   pivot_wider(names_from = sex, values_from = count) %>%
-  select(-both) %>%
-  mutate(diff = male - female) %>%
-  ggplot(aes(x = year, y = diff)) +
-  geom_point()
+  select(-male, -female) %>%
+  ggplot(aes(x = year, y = both)) +
+  geom_col() +
+  geom_text(aes(x = year, y = both - 500, label = both)) 
 ```
 
 ```{r}
 gender_rate %>%
   filter(offence_type == "Total") %>%
   filter(sex != "both") %>%
-  ggplot(aes(x = year, y = count, color = sex)) +
-  geom_point()
+  pivot_wider(names_from = sex, values_from = count) %>%
+  mutate(male_rate = (male - lag(male)) / lag(male),
+         female_rate = (female - lag(female)) / lag(female)) %>%
+  select(year, male_rate, female_rate) %>%
+  slice(-1) %>%
+  arrange(desc(year))
 ```
 
 
-```{r}
-gender_rate %>%
-   filter(sex != "both",
-          offence_type != "Total") %>%
-  group_by(offence_type, sex) %>%
-  summarise(mean_rate = mean(count, na.rm = TRUE)) %>%
-  ggplot(aes(y = offence_type, x = mean_rate, color = sex), position = position_dodge2()) +
-  geom_col()
-```
 
 
 
