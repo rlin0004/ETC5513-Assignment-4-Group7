@@ -47,11 +47,7 @@ library(ggplot2)
 \section*{body 3}
 
 \section*{Police Proceedings}
-```{r}
-library(readr)
 
-
-```
 # Conclusion
 
 # Reference
@@ -61,73 +57,120 @@ library(readr)
 library(tidyverse)
 library(readxl)
 library(dplyr)
+library(readr)
 ```
 
 ```{r import_data4}
 NSW <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
-                      sheet = 2, range = "A6:L57") %>% 
+                      sheet = 2, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
-NSW <- NSW[c(16,32,48),2:12]
-NSW <-t(NSW) %>% as.data.frame()
-colnames(NSW) <- c("Court", "Non_Court", "Total")
+NSW$`2008–09` =as.double(NSW$`2008–09`)
+NSW <- NSW[-16,]
+NSW <- NSW %>% mutate(Action = c(rep("Court",15),rep("Non_Court",15)))
 NSW$States <- "NSW"
 
+NSW <- NSW %>%  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "Cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+
 VIC <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
-                      sheet = 3, range = "A6:L57") %>% 
+                      sheet = 3, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
-VIC <- VIC[c(16,32,48),2:12]
-VIC <- t(VIC) %>% as.data.frame()
-colnames(VIC) <- c("Court", "Non_Court", "Total")
+VIC$`2008–09` =as.double(VIC$`2008–09`)
+VIC <- VIC[-16,]
+VIC <- VIC %>% mutate(Action = c(rep("Court",15),rep("Non_Court",15)))
 VIC$States <- "VIC"
 
+VIC <- VIC %>%  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "Cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+
 QLD <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
-                      sheet = 4, range = "A6:L57") %>% 
+                      sheet = 4, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
-QLD <- QLD[c(16,32,48),2:12]
-QLD <- t(QLD) %>% as_data_frame()
-colnames(QLD) <- c("Court", "Non_Court", "Total")
+QLD$`2008–09` =as.double(QLD$`2008–09`)
+QLD <- QLD[-16,]
+QLD <- QLD %>% mutate(Action = c(rep("Court",15),rep("Non_Court",15)))
 QLD$States <- "QLD"
-rownames(QLD) <- rownames(VIC)
+
+QLD <- QLD %>%  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "Cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
 
 SA <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
-                      sheet = 5, range = "A6:L57") %>% 
+                      sheet = 5, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
-SA <- SA[c(16,32,48),2:12]
-SA <- t(SA) %>% as.data.frame()
-colnames(SA) <- c("Court", "Non_Court", "Total")
+SA$`2008–09` =as.double(SA$`2008–09`)
+SA <- SA[-16,]
+SA <- SA %>% mutate(Action = c(rep("Court",15),rep("Non_Court",15)))
 SA$States <- "SA"
 
+SA <- SA %>%  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "Cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+
+
 TAS <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
-                      sheet = 6, range = "A6:L57") %>% 
+                      sheet = 6, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
-TAS <- TAS[c(16,32,48),2:12]
-TAS <- t(TAS) %>% as.data.frame()
-colnames(TAS) <- c("Court", "Non_Court", "Total") 
+TAS$`2008–09` =as.double(TAS$`2008–09`)
+TAS <- TAS[-16,]
+TAS <- TAS %>% mutate(Action = c(rep("Court",15),rep("Non_Court",15)))
 TAS$States <- "TAS"
 
-NT <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
-                      sheet = 7, range = "A6:L22") %>% 
-  dplyr::filter(!is.na(`Principal offence`))
-NT <- NT[c(16),2:12] 
-NT <- t(NT) %>% as.data.frame()
-colnames(NT) <- c("Total")
-NT$Court <- as.factor (NA)
-NT$Non_Court <-as.factor(NA)
-NT$States <- "NT"
-NT$Total <-as.factor(NT$Total)
-NT <- NT %>% select(Court, Non_Court, Total, States)
+TAS <- TAS %>%  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "Cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+
 
 ACT <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
-                      sheet = 8, range = "A6:L57") %>% 
+                      sheet = 8, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
-ACT <- ACT[c(16,32,48),2:12]
-ACT <- t(ACT) %>% as.data.frame()
-colnames(ACT) <- c("Court", "Non_Court", "Total")
+ACT$`2008–09` =as.double(ACT$`2008–09`)
+ACT <- ACT[-16,]
+ACT <- ACT %>% mutate(Action = c(rep("Court",15),rep("Non_Court",15)))
 ACT$States <- "ACT"
 
-data <- bind_rows(NSW, VIC, QLD, SA, TAS, ACT, NT)
+ACT <- ACT %>%  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "Cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+
+
+procced <- bind_rows(NSW, VIC, QLD, SA, TAS, ACT)
 ```
 
-```{r plot}
+```{r zyliu1}
+procced %>%
+  group_by(Action) %>%
+  ggplot(aes(Year, Cases,
+             colour = States,
+             fill = States)) +
+  geom_col() +
+  facet_wrap(~States)
 
 ```
+
+
+
+
+```{r}
+NSW2 <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+                      sheet = 2, range = "A6:L39") %>% 
+  dplyr::filter(!is.na(`Principal offence`)) 
+NSW2$`2008–09` =as.double(NSW2$`2008–09`)
+NSW2 <- NSW2[-16,]
+NSW2 <- NSW2 %>% mutate(procceding = c(rep("ture",15),rep("FALSE",15)))
+
+NSW2 <- NSW2 %>%  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+
