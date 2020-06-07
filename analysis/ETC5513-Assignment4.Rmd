@@ -134,6 +134,23 @@ combined_age %>%
   facet_wrap(~age_group)
 ```
 
+```{r}
+combined_age %>% 
+  group_by(age_group, principal_offence) %>%
+  summarise(total = sum(number_offences)) %>%
+  ggplot() +
+  geom_col(aes(x = age_group,
+             y= total,
+             fill = age_group)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ylab("Total Number of Offences") +
+  xlab("Age Group") +
+  labs(title = "Distribution of Offenders by Age Group") +
+  facet_wrap(~principal_offence)
+```
+
+
+
 \section*{body 3}
 
 \section*{body 4}
