@@ -155,11 +155,23 @@ procced %>%
   geom_col(aes(x = States,
              y= Cases,
              fill = Action)) +
-  theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
+  theme(axis.text.x = element_text(hjust = 1)) +
   ylab("Total Number of Offences") +
   xlab("States") +
   labs(title = "Distribution of Offenders by Action type")
 ```
 
-
+```{r zyliu1, fig.cap="Distribution of Offenders by Offence type"}
+procced %>% 
+  group_by(`Principal offence`, Action) %>%
+  summarise(Cases = sum(Cases)) %>%
+  ggplot() +
+  geom_col(aes(x = `Principal offence`,
+             y= Cases,
+             fill = Action)) +
+  theme(axis.text.x = element_text(angle = 70, hjust = 1)) +
+  ylab("Total Number of Offences") +
+  xlab("Offence type") +
+  labs(title = "Distribution of Offenders by offence type") 
+```
 
