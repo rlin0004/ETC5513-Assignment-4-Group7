@@ -96,13 +96,14 @@ combined_age %>%
   group_by(age_group) %>%
   summarise(total = sum(number_offences)) %>%
   ggplot() +
-  geom_col(aes(x = age_group,
+  geom_col(aes(x = reorder(age_group, total),
              y= total,
              fill = age_group)) +
-  theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
+ # theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
   ylab("Total Number of Offences") +
   xlab("Age Group") +
-  labs(title = "Distribution of Offenders by Age Group")
+  labs(title = "Distribution of Offenders by Age Group")  +
+  coord_flip()
 ```
 
 ```{r creating-graph2}
@@ -116,7 +117,7 @@ combined_age %>%
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
   ylab("Total Number of Offences") +
   xlab("Age Group") +
-  labs(title = "Distribution of Offenders by Age Group") 
+  labs(title = "Distribution of Offenders by Age Group")
 ```
 
 ```{r creating-graph2}
@@ -129,8 +130,8 @@ combined_age %>%
              fill = Year)) +
   theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
   ylab("Total Number of Offences") +
-  xlab("Age Group") +
-  labs(title = "Distribution of Offenders by Age Group") +
+  xlab("Year") +
+  labs(title = "Distribution of Offenders by Age Group and Year") +
   facet_wrap(~age_group)
 ```
 
@@ -149,7 +150,26 @@ combined_age %>%
   facet_wrap(~principal_offence)
 ```
 
+It can be noticed that the highest number of offenders belong to the age group of 20-24, 25-29, and 15-19, therefore we look at these age groups in more details.
+```{r}
+top3age <- combined_age %>% 
+  filter(age_group %in% c("20–24 years", "15–19 years", "25–29 years")) 
 
+top3age %>%
+  group_by(age_group, principal_offence, Year) %>%
+  summarise(total = sum(number_offences)) %>%
+  ggplot() +
+  geom_col(aes(x = principal_offence,
+             y= total,
+             fill = principal_offence)) +
+  facet_grid(age_group~Year) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ylab("Total Number of Offences") +
+  xlab("Principal Offence") +
+  labs(title = "Distribution of Offenders by Age Group") +
+  theme(axis.text.x = element_blank())
+```
+We can see a clear trend here that all age group has the highest number of offences in principal offence number 10, which is illicit drug offences. However, the number is decreasing in 2018-2019.
 
 \section*{body 3}
 
