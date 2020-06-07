@@ -36,6 +36,7 @@ library(ggplot2)
 library(tidyverse)
 library(readxl)
 library(lubridate)
+library(kableExtra)
 ```
 
 
@@ -120,7 +121,7 @@ combined_age %>%
   labs(title = "Distribution of Offenders by Age Group")
 ```
 
-```{r creating-graph2}
+```{r graph2}
 combined_age %>% 
   group_by(age_group, Year) %>%
   summarise(total = sum(number_offences)) %>%
@@ -132,8 +133,30 @@ combined_age %>%
   ylab("Total Number of Offences") +
   xlab("Year") +
   labs(title = "Distribution of Offenders by Age Group and Year") +
-  facet_wrap(~age_group)
+  facet_wrap(~age_group, scales = "free") +
+  theme(axis.text.x = element_blank())
 ```
+
+```{r summary-table}
+total_1718 <- combined_age %>%
+  filter(Year == "2017-2018") %>%
+  group_by(age_group) %>%
+  summarise(`Total 2017-2018` = sum(number_offences))
+
+total_1819 <- combined_age %>%
+  filter(Year == "2018-2019") %>%
+  group_by(age_group) %>%
+  summarise(`Total 2018-2019` = sum(number_offences))
+
+total_all <- total_1718 %>%
+  left_join(total_1819, 
+            by = "age_group")
+
+kable(total_all) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+An interesting trend to notice from Figure graph2 and summary-table is that the number of offences for age group below 45 decreased in 2018-2019, whils it increased for age group above 45.
+
 
 ```{r}
 combined_age %>% 
@@ -170,6 +193,8 @@ top3age %>%
   theme(axis.text.x = element_blank())
 ```
 We can see a clear trend here that all age group has the highest number of offences in principal offence number 10, which is illicit drug offences. However, the number is decreasing in 2018-2019.
+
+
 
 \section*{body 3}
 
