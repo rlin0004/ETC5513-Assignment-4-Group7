@@ -142,35 +142,24 @@ ACT <- ACT %>%  pivot_longer(cols = `2008–09`:`2018–19`,
    mutate(Year = year(as.Date(Year, "%Y")))
 
 
-procced <- bind_rows(NSW, VIC, QLD, SA, TAS, ACT)
+procced <- bind_rows(NSW, VIC, QLD, SA, TAS, ACT) %>%
+  dplyr::filter(!is.na(Cases))
+  
 ```
 
-```{r zyliu1}
-procced %>%
-  group_by(Action) %>%
-  ggplot(aes(Year, Cases,
-             colour = States,
-             fill = States)) +
-  geom_col() +
-  facet_wrap(~States)
-
+```{r zyliu1, fig.cap="Distribution of Offenders by Action type"}
+procced %>% 
+  group_by(States, Action) %>%
+  summarise(Cases = sum(Cases)) %>%
+  ggplot() +
+  geom_col(aes(x = States,
+             y= Cases,
+             fill = Action)) +
+  theme(axis.text.x = element_text(angle = 20, hjust = 1)) +
+  ylab("Total Number of Offences") +
+  xlab("States") +
+  labs(title = "Distribution of Offenders by Action type")
 ```
 
-
-
-
-```{r}
-NSW2 <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
-                      sheet = 2, range = "A6:L39") %>% 
-  dplyr::filter(!is.na(`Principal offence`)) 
-NSW2$`2008–09` =as.double(NSW2$`2008–09`)
-NSW2 <- NSW2[-16,]
-NSW2 <- NSW2 %>% mutate(procceding = c(rep("ture",15),rep("FALSE",15)))
-
-NSW2 <- NSW2 %>%  pivot_longer(cols = `2008–09`:`2018–19`,
-               names_to = "Year", 
-               values_to = "cases") %>%
-   mutate(Year = year(as.Date(Year, "%Y")))
-```
 
 
