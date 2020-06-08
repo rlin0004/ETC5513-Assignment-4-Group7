@@ -94,6 +94,9 @@ gender %>%
   ggtitle("Yearly average offence records of different offence type")
 ```
 
+As showing in Figure \@ref(fig:gender1), each bar represents the average number of records for each type of offence and gender over the ten years. The overall offence recorded that the number of male offenders is significantly higher than female offenders. The highest number of offence type for males are “Acts intended to cause injury” and for female are “Theft”.  
+
+
 
 ```{r gendersumm}
 gender %>%
@@ -113,6 +116,8 @@ gender %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed")) 
 ```
 
+If we look at the summary (Refer to Table \@ref(tab:gendersumm)), the result also indicates that in all the offence types, the number of male offenders is significantly higher than female offenders. The “Sexual assault and related offence” is the most significant difference between the number of males and females, and the average number of males is about 17 times higher than females. The difference in “Theft” is relatively minimal; males are about 1.53 times higher than females. Over the ten years, the average number of male offenders is 4.42 times higher than that of females.
+
 ```{r gender2, fig.width=8}
 gender %>%
    filter(sex != "both",
@@ -121,6 +126,9 @@ gender %>%
   geom_line() +
   facet_wrap(~sex)
 ```
+
+From Figure \@ref(fig:gender2), we can observe that the yearly changes on the number of records of most types of the offence are stable on both genders. However, there still have some changes. For females, the number of “Theft” drop highly, from about 25,000 reduced to 15,000 and “Illicit drug offences” increased by nearly 10,000. For males, although some type offences remain at a relatively high level, “Unlawful entry with intent and Property damage” and “environmental pollution” have decreased by about 20,000. Government still need to pay attention to the issue of “Illicit drug offences”, because the number of records has increased a lot compared to 2008.
+
 
 
 ```{r clean gender rate}
@@ -161,6 +169,9 @@ gender_rate %>%
   geom_text(aes(x = year, y = both - 500, label = both)) 
 ```
 
+In Figure \@ref(fig:gender3), it represents the offender rate on both genders; the rate indicates the number of offenders in 100,000 people. In 2009, the rate was 2,062 offenders in 100,000 people. After the overall trend is decreasing, in 2018, there are about 1,794 offenders in 100,000 people. The rate decreased to their lowest levels in six years. 
+
+
 ```{r gendersumm2}
 gender_rate %>%
   filter(offence_type == "Total") %>%
@@ -172,6 +183,8 @@ gender_rate %>%
   slice(-1) %>%
   arrange(desc(year))
 ```
+
+Focus on the change on the genders (Refer to Table \@ref(tab:gendersumm2)); the rate of both genders offenders is continuously decreasing in recent years. 
 
 ```{r gender changes}
 summ_gender <- gender %>%
@@ -199,6 +212,12 @@ bind_rows(summ_gender, summ_gender_rate) %>%
   select(type, sex, diff, rate, -offence_type, -`2008`, -`2018`) 
 ```
 
+From Table \@ref(tab:gendersumm3), we can conclude that the number of offenders recorded in Australia increased on both males and females from 2008 to 2018. However, the rate of offenders recorded has dropped significantly, and the offence rate of males has decreased more than that of females.   
+
+- The number of male offenders increased by 5,239, and the increasing rate is 1.79%.  
+- The number of female offenders increased by 13,595, and the increasing rate is 16.63%.  
+- The rate of male offenders has dropped by 408 per 100,000 people, and the decreasing rate is 12.93%.  
+- The rate of female offenders has dropped by 9 per 100,000 people, and the decreasing rate is 1.07%.  
 
 
 
