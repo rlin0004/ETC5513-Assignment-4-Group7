@@ -166,8 +166,6 @@ sa1 <- sa %>%
    mutate(Year = year(as.Date(Year, "%Y")))
 ```
 
-
-
 ```{r}
 wa <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 7, range = "A6:L39")
 ```
@@ -397,7 +395,7 @@ vic_crime2018 %>%
 ```
 In the figure \@ref(fig:vic), 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
 
-```{r}
+```{r table3.1}
 crime2018 <- state_crime %>%
   dplyr::filter(Year == "2018") %>%
   mutate(total_cases = sum(cases),
@@ -410,10 +408,11 @@ crime2018 <- state_crime %>%
 crime2018 %>%
   arrange() %>%
   unique() %>%
-  kable(caption = "This is the table caption")
+  knitr::kable(col.names = c("State", "Proportion"),
+                             caption = "Crime statistics 2018 AU")
 
 ```
-
+\@ref(tab:table3.1) also implies the top 4 states accounted for highest proportion of total crime cases recorded in Australia 2018. 
 
 \section*{body 4}
 
