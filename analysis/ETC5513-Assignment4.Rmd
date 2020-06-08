@@ -52,6 +52,8 @@ library(tidyverse)
 library(readxl)
 library(lubridate)
 library(gridExtra)
+library(knitr)
+library(bookdown)
 ```
 \ In this section, we are exploring the Australian crime statistics between states/territories. The analysis will be exploring which state has the highest crime rates, and what principal offence accounts for a large proportion.
 ```{r nsw-cleaning}
@@ -394,6 +396,24 @@ vic_crime2018 %>%
   ggtitle("VIC crime 2018")
 ```
 In the figure \@ref(fig:vic), 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
+
+```{r}
+crime2018 <- state_crime %>%
+  dplyr::filter(Year == "2018") %>%
+  mutate(total_cases = sum(cases),
+         proportion = (cases/total_cases)*100) %>%
+  dplyr::select(state, proportion)  %>%
+  group_by(state) %>%
+  mutate(total_proportion = sum(proportion)) %>%
+  dplyr::select(state, total_proportion)
+
+crime2018 %>%
+  arrange() %>%
+  unique() %>%
+  kable(caption = "This is the table caption")
+
+```
+
 
 \section*{body 4}
 
