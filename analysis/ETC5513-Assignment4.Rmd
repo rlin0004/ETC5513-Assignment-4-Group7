@@ -121,7 +121,7 @@ combined_age %>%
   labs(title = "Distribution of Offenders by Age Group")
 ```
 
-```{r graph2}
+```{r graph2.2}
 combined_age %>% 
   group_by(age_group, Year) %>%
   summarise(total = sum(number_offences)) %>%
@@ -155,7 +155,7 @@ total_all <- total_1718 %>%
 kable(total_all) %>%
   kable_styling(bootstrap_options = c("striped", "hover"))
 ```
-An interesting trend to notice from Figure graph2 and summary-table is that the number of offences for age group below 45 decreased in 2018-2019, whils it increased for age group above 45.
+An interesting trend to notice from Figure \@ref(fig:graph2.2) and Table \@ref(tab:summary-table) is that the number of offences for age group below 45 decreased in 2018-2019, whils it increased for age group above 45.
 
 
 ```{r}
