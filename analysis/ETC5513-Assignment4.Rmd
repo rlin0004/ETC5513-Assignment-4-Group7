@@ -203,23 +203,6 @@ bind_rows(summ_gender, summ_gender_rate) %>%
 
 
 
-
-```{r}
-gender %>%
-   filter(sex != "both",
-          offence_type != "Total") %>%
-  group_by(year, offence_type, sex) %>%
-  summarise(mean_year = mean(count, na.rm = TRUE)) %>%
-  ggplot(aes(x = offence_type, y = mean_year, fill = sex)) +
-  geom_bar(stat = "identity", position = "fill") +
-  scale_fill_brewer(palette="Paired") +
-  geom_hline(yintercept = 0.50, color = "red") +
-  theme(legend.position = "bottom") +
-  coord_flip()
-```
-
-
-
 \section*{body 2}
 
 \section*{body 3}
