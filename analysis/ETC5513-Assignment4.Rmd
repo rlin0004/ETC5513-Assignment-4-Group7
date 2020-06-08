@@ -8,9 +8,11 @@ author:
 - familyname: xxx
   othernames: xxx
   address: Monash University
+  correspondingauthor: true
 - familyname: xxx
   othernames: xxx
   address: Monash University
+  correspondingauthor: true
 department: Department of\newline Econometrics &\newline Business Statistics
 organization: Acme Corporation
 bibliography: references.bib
@@ -64,7 +66,7 @@ gender_raw <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet =
 
 
 
-```{r}
+```{r clean gender}
 male_count <- gender_raw[7:22, 1:12] %>%
   mutate(sex = "male")
 female_count <- gender_raw[24:39, 1:12] %>%
@@ -78,7 +80,7 @@ gender <- bind_rows(male_count, female_count, both_count) %>%
                values_to = "count")
 ```
 
-```{r}
+```{r gender1, fig.width=5}
 gender %>%
   filter(sex != "both",
          offence_type != "Total") %>%
@@ -93,7 +95,7 @@ gender %>%
 ```
 
 
-```{r}
+```{r gendersumm}
 gender %>%
   pivot_wider(names_from = sex, values_from = count) %>%
   select(- both) %>%
@@ -111,7 +113,7 @@ gender %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed")) 
 ```
 
-```{r, fig.width=8}
+```{r gender2, fig.width=8}
 gender %>%
    filter(sex != "both",
           offence_type != "Total") %>%
@@ -121,7 +123,7 @@ gender %>%
 ```
 
 
-```{r}
+```{r clean gender rate}
 gender_rate_raw <- gender_raw %>%
   select(offence_type, ...13:...23) %>%
   rename("2008" = ...13,
@@ -149,7 +151,7 @@ gender_rate <- bind_rows(male_rate, female_rate, both_rate) %>%
                values_to = "count")
 ```
 
-```{r}
+```{r gender3}
 gender_rate %>%
   filter(offence_type == "Total") %>%
   pivot_wider(names_from = sex, values_from = count) %>%
@@ -159,7 +161,7 @@ gender_rate %>%
   geom_text(aes(x = year, y = both - 500, label = both)) 
 ```
 
-```{r}
+```{r gendersumm2}
 gender_rate %>%
   filter(offence_type == "Total") %>%
   filter(sex != "both") %>%
@@ -171,7 +173,31 @@ gender_rate %>%
   arrange(desc(year))
 ```
 
+```{r gender changes}
+summ_gender <- gender %>%
+  filter(offence_type == "Total",
+         year %in% c("2008", "2018"), 
+         sex %in% c("male", "female")) %>%
+  pivot_wider(names_from = year, values_from = count) %>%
+  mutate(diff = `2018` - `2008`,
+         rate = (`2018` - `2008`) / `2008`,
+         type = "Number of Offender")
 
+
+summ_gender_rate <- gender_rate %>%
+  filter(offence_type == "Total",
+         year %in% c("2008", "2018"), 
+         sex %in% c("male", "female")) %>%
+  pivot_wider(names_from = year, values_from = count) %>%
+  mutate(diff = `2018` - `2008`,
+         rate = (`2018` - `2008`) / `2008`,
+         type = "Rate of Offender")
+```
+
+```{r gendersumm3}
+bind_rows(summ_gender, summ_gender_rate) %>%
+  select(type, sex, diff, rate, -offence_type, -`2008`, -`2018`) 
+```
 
 
 
