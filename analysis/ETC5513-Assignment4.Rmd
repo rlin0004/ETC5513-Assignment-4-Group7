@@ -40,6 +40,7 @@ library(ggplot2)
 
 # Analysis
 
+
 \section*{body 1}
 
 \section*{body 2}
@@ -112,7 +113,7 @@ vic1 <- vic %>%
 qld <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 5, range = "A6:L39")
 ```
 
-```{r vic-cleaning1}
+```{r qld-cleaning1}
 qld <- qld %>% 
   dplyr::filter(!is.na(`Principal offence`))
 
@@ -230,7 +231,7 @@ nt <- nt[-c(16),]
 
 ```
 
-```{r tas-cleaning2}
+```{r nt-cleaning2}
 nt <- nt %>% 
   dplyr::filter(!is.na(`Principal offence`)) %>%
   mutate(state = rep("NT", 30))
@@ -256,7 +257,7 @@ act <- act[-c(16),]
 
 ```
 
-```{r tas-cleaning2}
+```{r act-cleaning2}
 act <- act %>% 
   dplyr::filter(!is.na(`Principal offence`)) %>%
   mutate(state = rep("ACT", 30))
@@ -338,9 +339,9 @@ state_crime %>%
   geom_col()
 
 ```
-\ The figure above demonstrates high crime cases recorded by NSW, QLD, SA, VIC and WA. However, the high number of crime cases recorded in these states may due to its high population compared to other states/territories like ACT, NT and TAS.
+The figure above demonstrates high crime cases recorded by NSW, QLD, SA, VIC and WA. However, the high number of crime cases recorded in these states may due to its high population compared to other states/territories like ACT, NT and TAS.
 
-\ Next, We'd like to look into the frequency of the principal offence in 2018 for top 4 crime-level states. (NSW, QLD, SA and VIC)
+Next, We'd like to look into the frequency of the principal offence in 2018 for top 4 crime-level states. (NSW, QLD, SA and VIC)
 
 ```{r}
 nsw_crime2018 <- state_crime %>%
@@ -367,7 +368,7 @@ nsw_crime2018 %>%
   theme(axis.text.x = element_blank()) +
   ggtitle("NSW crime 2018")
 ```
-\ The figure \@ref(fig:nsw) demonstrates that 02 Acts intended to cause injury takes the largest proportion in NSW's 2018 crime statistics.
+The figure \@ref(fig:nsw) demonstrates that 02 Acts intended to cause injury takes the largest proportion in NSW's 2018 crime statistics.
 
 ```{r qld, fig.cap="QLD crime 2018"}
 qld_crime2018 %>%
@@ -376,7 +377,7 @@ qld_crime2018 %>%
   theme(axis.text.x = element_blank()) +
   ggtitle("QLD crime 2018")
 ```
-\ The figure \@ref(fig:qld) demonstrates that 10 Illicit drug offences takes the largest proportion in QLD's 2018 crime statistics.
+The figure \@ref(fig:qld) demonstrates that 10 Illicit drug offences takes the largest proportion in QLD's 2018 crime statistics.
 ```{r sa, fig.cap="SA crime 2018"}
 sa_crime2018 %>%
   ggplot(aes(`Principal offence`, cases)) +
@@ -384,7 +385,7 @@ sa_crime2018 %>%
   theme(axis.text.x = element_blank()) +
   ggtitle("SA crime 2018")
 ```
-\ The figure \@ref(fig:sa) also represents the outstanding proportion of 10 Illicit drug offences in South Australia's 2018 crime statistics.
+The figure \@ref(fig:sa) also represents the outstanding proportion of 10 Illicit drug offences in South Australia's 2018 crime statistics.
 ```{r vic, fig.cap="VIC crime 2018"}
 vic_crime2018 %>%
   ggplot(aes(`Principal offence`, cases)) +
@@ -392,8 +393,7 @@ vic_crime2018 %>%
   theme(axis.text.x = element_blank()) +
   ggtitle("VIC crime 2018")
 ```
-\ In the figure \@ref(fig:vic), 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
-
+In the figure \@ref(fig:vic), 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
 
 \section*{body 4}
 
