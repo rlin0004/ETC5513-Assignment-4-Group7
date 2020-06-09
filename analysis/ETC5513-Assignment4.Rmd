@@ -1,25 +1,30 @@
 ---
-title: "ETC5513 Assignment4 Group7"
+title: "Offences in Australis (2008 - 2018)"
 author:
-- familyname: xxxxx
-  othernames: xxxxx
-  address: Monash University
+- familyname: Yiwen
+  othernames: Jiang
+  address: Monash Universtidy
+  email: yjia0021@student.monash.edu
   correspondingauthor: true
-- familyname: xxx
-  othernames: xxx
-  address: Monash University
+  qualifications:  BA
+- familyname: XXXX
+  othernames: Reports
+  address: XXX
+  qualifications: XXX
+- familyname: XXX
+  othernames: XXX
+  address: XXX
+  email: XXX
   correspondingauthor: true
-- familyname: xxx
-  othernames: xxx
-  address: Monash University
-  correspondingauthor: true
-department: Department of\newline Econometrics &\newline Business Statistics
-organization: Acme Corporation
+  qualifications:  XXX
+department: Our consultancy \newline add names &\newline add names
+organization: Australian Bureau of Statistic
 bibliography: references.bib
 biblio-style: authoryear-comp
 linestretch: 1.5
 output:
-  MonashEBSTemplates::report:
+  bookdown::pdf_document2:
+    template: monashreport2.tex
     fig_caption: yes
     fig_height: 5
     fig_width: 8
@@ -46,9 +51,9 @@ library(kableExtra)
 
 # Analysis
 
-\section*{body 1}
+\section*{Gender difference in the number and rate of offences}
 
-```{r read gender data}
+```{r read gender data, include=FALSE}
 gender_raw <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 3, col_types = c("text", rep("numeric", 22))) %>%
   rename("offence_type" = `Australian Bureau of Statistics`,
          "2008" = ...2,
@@ -66,7 +71,7 @@ gender_raw <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet =
 
 
 
-```{r clean gender}
+```{r clean gender, echo=FALSE}
 male_count <- gender_raw[7:22, 1:12] %>%
   mutate(sex = "male")
 female_count <- gender_raw[24:39, 1:12] %>%
@@ -80,21 +85,21 @@ gender <- bind_rows(male_count, female_count, both_count) %>%
                values_to = "count")
 ```
 
-```{r gender1, fig.width=5}
+```{r gender1, fig.width=6, fig.cap="Yearly average offence records of different offence type"}
 gender %>%
   filter(sex != "both",
          offence_type != "Total") %>%
   group_by(year, offence_type, sex) %>%
   summarise(mean_year = mean(count, na.rm = TRUE)) %>%
-  ggplot(aes(x = mean_year, y = offence_type)) +
+  ggplot(aes(x = offence_type, y = mean_year)) +
   geom_col() +
   facet_wrap(~sex) +
   ylab("Offence Types") +
   xlab("Average annual Records") +
-  ggtitle("Yearly average offence records of different offence type")
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 ```
 
-As showing in Figure \@ref(fig:gender1), each bar represents the average number of records for each type of offence and gender over the ten years. The overall offence recorded that the number of male offenders is significantly higher than female offenders. The highest number of offence type for males are “Acts intended to cause injury” and for female are “Theft”.  
+As showing in Figure \@ref(fig:gender1), each bar represents the average number of records for each type of offence and gender over the ten years. The overall offence recorded that the number of male offenders is significantly higher than female offenders. The highest number of offence type for males are “Acts intended to cause injury” and for females are “Theft”.  
 
 
 
@@ -103,35 +108,38 @@ gender %>%
   pivot_wider(names_from = sex, values_from = count) %>%
   select(- both) %>%
   group_by(offence_type) %>%
-  summarise(avg_male = mean(male, na.rm = TRUE),
-            avg_female = mean(female, na.rm = TRUE)) %>%
+  summarise(avg_male = round(mean(male, na.rm = TRUE), 1),
+            avg_female = round(mean(female, na.rm = TRUE), 1)) %>%
   mutate(result = if_else(
     condition = avg_male > avg_female,
-    true = paste0("Males are ", round(avg_male / avg_female, 2), " times higher than females"),
-    false = paste0("Females are ", round(avg_female / avg_male, 2), " times higher than males")
+    true = paste0("Males are ", round(avg_male / avg_female, 2), " times higher"),
+    false = paste0("Females are ", round(avg_female / avg_male, 2), " times higher")
   )) %>%
-  kable(col.names = c("Offence Type", "Avg.Male", "Avg.Female", "Result"),
-        caption = "Summary of Yearly avergae records") %>%
-  row_spec(c(1, 3, 5, 7, 9, 11, 13, 15), background = "lightblue") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) 
+  kable(col.names = c("Offence Type", "Male", "Female", "Result"),
+        caption = "Summary of yearly average number of offences") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                latex_options = c("HOLD_position", "scale_down"))
 ```
 
 If we look at the summary (Refer to Table \@ref(tab:gendersumm)), the result also indicates that in all the offence types, the number of male offenders is significantly higher than female offenders. The “Sexual assault and related offence” is the most significant difference between the number of males and females, and the average number of males is about 17 times higher than females. The difference in “Theft” is relatively minimal; males are about 1.53 times higher than females. Over the ten years, the average number of male offenders is 4.42 times higher than that of females.
 
-```{r gender2, fig.width=8}
+```{r gender2, fig.width=8, fig.cap="Yearly Number of Offenders on Female and Male"}
 gender %>%
    filter(sex != "both",
           offence_type != "Total") %>%
   ggplot(aes(x = year, y = count, group = offence_type, color = offence_type)) +
   geom_line() +
-  facet_wrap(~sex)
+  facet_wrap(~sex) +
+  theme(legend.position = 'bottom') +
+  ylab("Number of offenders") +
+  xlab("Year")
 ```
 
 From Figure \@ref(fig:gender2), we can observe that the yearly changes on the number of records of most types of the offence are stable on both genders. However, there still have some changes. For females, the number of “Theft” drop highly, from about 25,000 reduced to 15,000 and “Illicit drug offences” increased by nearly 10,000. For males, although some type offences remain at a relatively high level, “Unlawful entry with intent and Property damage” and “environmental pollution” have decreased by about 20,000. Government still need to pay attention to the issue of “Illicit drug offences”, because the number of records has increased a lot compared to 2008.
 
 
 
-```{r clean gender rate}
+```{r clean gender rate, echo=FALSE}
 gender_rate_raw <- gender_raw %>%
   select(offence_type, ...13:...23) %>%
   rename("2008" = ...13,
@@ -159,14 +167,16 @@ gender_rate <- bind_rows(male_rate, female_rate, both_rate) %>%
                values_to = "count")
 ```
 
-```{r gender3}
+```{r gender3, fig.cap="Rate of offenders recorded in Australia"}
 gender_rate %>%
   filter(offence_type == "Total") %>%
   pivot_wider(names_from = sex, values_from = count) %>%
   select(-male, -female) %>%
   ggplot(aes(x = year, y = both)) +
   geom_col() +
-  geom_text(aes(x = year, y = both - 500, label = both)) 
+  geom_text(aes(x = year, y = both - 500, label = both)) +
+  ylab("Offence rate per 100,000 people") +
+  xlab("Year")
 ```
 
 In Figure \@ref(fig:gender3), it represents the offender rate on both genders; the rate indicates the number of offenders in 100,000 people. In 2009, the rate was 2,062 offenders in 100,000 people. After the overall trend is decreasing, in 2018, there are about 1,794 offenders in 100,000 people. The rate decreased to their lowest levels in six years. 
@@ -181,7 +191,12 @@ gender_rate %>%
          female_rate = (female - lag(female)) / lag(female)) %>%
   select(year, male_rate, female_rate) %>%
   slice(-1) %>%
-  arrange(desc(year))
+  arrange(desc(year)) %>%
+  kable(col.names = c("Year", "Rate of male", "Rate of female"),
+        caption = "Yearly change rate of offence rate") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                latex_options = "HOLD_position",
+                full_width = T) 
 ```
 
 Focus on the change on the genders (Refer to Table \@ref(tab:gendersumm2)); the rate of both genders offenders is continuously decreasing in recent years. 
@@ -209,15 +224,21 @@ summ_gender_rate <- gender_rate %>%
 
 ```{r gendersumm3}
 bind_rows(summ_gender, summ_gender_rate) %>%
-  select(type, sex, diff, rate, -offence_type, -`2008`, -`2018`) 
+  select(type, sex, diff, rate, -offence_type, -`2008`, -`2018`) %>%
+  kable(col.names = c("", "Gender", "Difference", "Growth Rate"),
+        caption = "Difference and change rate on number and rate of offence between 2008 to 2018",
+        booktabs = T) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                latex_options = "HOLD_position",
+                full_width = T) 
 ```
 
 From Table \@ref(tab:gendersumm3), we can conclude that the number of offenders recorded in Australia increased on both males and females from 2008 to 2018. However, the rate of offenders recorded has dropped significantly, and the offence rate of males has decreased more than that of females.   
 
-- The number of male offenders increased by 5,239, and the increasing rate is 1.79%.  
-- The number of female offenders increased by 13,595, and the increasing rate is 16.63%.  
-- The rate of male offenders has dropped by 408 per 100,000 people, and the decreasing rate is 12.93%.  
-- The rate of female offenders has dropped by 9 per 100,000 people, and the decreasing rate is 1.07%.  
+* The number of male offenders increased by 5,239, and the increasing rate is 1.79%.  
+* The number of female offenders increased by 13,595, and the increasing rate is 16.63%.  
+* The rate of male offenders has dropped by 408 per 100,000 people, and the decreasing rate is 12.93%.  
+* The rate of female offenders has dropped by 9 per 100,000 people, and the decreasing rate is 1.07%.  
 
 
 
