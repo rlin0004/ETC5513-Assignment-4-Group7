@@ -49,8 +49,6 @@ library(kableExtra)
 \section*{body 1}
 
 \section*{body 2}
-This section will be looking at the offenders by age group. Analysis such as the proportion of offenders in each age group, what principal offences account for the majority of the offences in each age group, and the changes in number of offenders will be discussed here.
-
 ```{r reading-data}
 crime_age_201819 <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 4, range = "A5:M21")
 
@@ -190,11 +188,6 @@ lowest3age %>%
   theme(axis.text.x = element_blank())
 ```
 Figure \@ref(fig:lowest-3) illustrates the distribution of total offenders in each principal offences for the lowest 3 age groups. There are some differences compared to the top 3 age groups. The highest principal offence for these lowest 3 groups is "Acts intended to cause injury". Interesting findings here are that total offenders in "Illicit drug offences" decreased as the age group moves up and also "Offences against justice" and "Miscellaneous offences" tend to be higher in older ages compared to younger ages. While most of the offence types experienced an increase over time, one similar finding as in the top 3 data is that there is a significant decrease in "Public order offences".
-
-
-Conclusion: Even though the total number of offenders differs across agr groups, the trend is pre similar with 10, 2, 13 being the top 3 highest principa offences.
-Younger people tend to commit more crimes.
-Rate of offenders decreased for thos below 45, while it increased for those above 45. 
 
 \section*{body 3}
 
