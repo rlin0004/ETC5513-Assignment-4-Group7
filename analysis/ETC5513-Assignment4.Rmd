@@ -367,7 +367,7 @@ qld_crime2018 %>%
   theme(axis.text.x = element_blank()) +
   ggtitle("QLD crime 2018")
 ```
-\ The figure \@ref(fig:qld) demonstrates that 10 Illicit drug offences takes the largest proportion in QLD's 2018 crime statistics. So why some states like QLD have drug offences on rife? Tony Fleming explains in the brisbane times that, “Largely it is because the Valley and CBD is a night and party precinct. A lot of the drug use is associated with people socialising and whatnot."*(@brisbanetimes2018)*
+\ The figure \@ref(fig:qld) demonstrates that 10 Illicit drug offences takes the largest proportion in QLD's 2018 crime statistics. So why some states like QLD have drug offences on rife? Tony Fleming explains in the brisbane times that, “Largely it is because the Valley and CBD is a night and party precinct. A lot of the drug use is associated with people socialising and whatnot."*(@brisbanetimes2019)*
 ```{r sa, fig.cap="SA crime 2018"}
 sa_crime2018 %>%
   ggplot(aes(`Principal offence`, cases)) +
