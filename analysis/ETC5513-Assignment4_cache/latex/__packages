@@ -11,3 +11,5 @@ forcats
 readxl
 lubridate
 gridExtra
+knitr
+bookdown

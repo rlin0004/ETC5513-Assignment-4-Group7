@@ -302,61 +302,49 @@
 
 \section*{Crime analysis by State and Territory}
 
-\begin{verbatim}
-## -- Attaching packages ---------------------- tidyverse 1.3.0 --
-\end{verbatim}
-
-\begin{verbatim}
-## v tibble  2.1.3     v dplyr   0.8.5
-## v tidyr   1.0.2     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.5.0
-## v purrr   0.3.3
-\end{verbatim}
-
-\begin{verbatim}
-## -- Conflicts ------------------------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'lubridate'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:base':
-## 
-##     date
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'gridExtra'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:dplyr':
-## 
-##     combine
-\end{verbatim}
-
 ~In this section, we are exploring the Australian crime statistics between states/territories. The analysis will be exploring which state has the highest crime rates, and what principal offence accounts for a large proportion.
 
 \includegraphics{ETC5513-Assignment4_files/figure-latex/graph1-1.pdf}
-The figure above demonstrates high crime cases recorded by NSW, QLD, SA, VIC and WA. However, the high number of crime cases recorded in these states may due to its high population compared to other states/territories like ACT, NT and TAS.
-
-Next, We'd like to look into the frequency of the principal offence in 2018 for top 4 crime-level states. (NSW, QLD, SA and VIC)
+~The figure above demonstrates high crime cases recorded by NSW, QLD, SA, VIC and WA. However, the high number of crime cases recorded in these states may due to its high population compared to other states/territories like ACT, NT and TAS.
+~Next, We'd like to look into the frequency of the principal offence in 2018 for top 4 crime-level states. (NSW, QLD, SA and VIC)
 
 \includegraphics{ETC5513-Assignment4_files/figure-latex/nsw-1.pdf}
-The figure \ref{fig:nsw} demonstrates that 02 Acts intended to cause injury takes the largest proportion in NSW's 2018 crime statistics.
-
+~The figure \ref{fig:nsw} demonstrates that 02 Acts intended to cause injury takes the largest proportion in NSW's 2018 crime statistics.
 \includegraphics{ETC5513-Assignment4_files/figure-latex/qld-1.pdf}
-The figure \ref{fig:qld} demonstrates that 10 Illicit drug offences takes the largest proportion in QLD's 2018 crime statistics.
+~The figure \ref{fig:qld} demonstrates that 10 Illicit drug offences takes the largest proportion in QLD's 2018 crime statistics.
 \includegraphics{ETC5513-Assignment4_files/figure-latex/sa-1.pdf}
-The figure \ref{fig:sa} also represents the outstanding proportion of 10 Illicit drug offences in South Australia's 2018 crime statistics.
+~The figure \ref{fig:sa} also represents the outstanding proportion of 10 Illicit drug offences in South Australia's 2018 crime statistics.
 \includegraphics{ETC5513-Assignment4_files/figure-latex/vic-1.pdf}
-In the figure \ref{fig:vic}, 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
+~In the figure \ref{fig:vic}, 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
+
+\begin{table}
+
+\caption{(\#tab:table3.1)Crime statistics 2018 AU}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+State & Proportion\\
+\hline
+NSW & 27.8823529\\
+\hline
+VIC & 20.3036936\\
+\hline
+QLD & 23.6136799\\
+\hline
+SA & 11.1898769\\
+\hline
+WA & 10.7370725\\
+\hline
+TAS & 2.6268126\\
+\hline
+NT & 2.9699042\\
+\hline
+ACT & 0.6766074\\
+\hline
+\end{tabular}
+\end{table}
+
+~Furthermore, @ref(tab:table3.1) also implies the top 4 states accounted for highest proportion of total crime cases recorded in Australia 2018.
 
 \section*{body 4}
 
