@@ -1,16 +1,20 @@
 ---
-title: "ETC5513 Assignment4 Group7"
+title: "ETC5513 Assignment 4 Group 7"
 author:
+- familyname: xxxx
+  othernames: xxxx
+  address: Monash University
+  email: xxxxxxxxxx
+  correspondingauthor: true
+  qualifications: Nobel Prize, PhD
 - familyname: xxxxx
   othernames: xxxxx
   address: Monash University
-  correspondingauthor: true
-- familyname: Evangelina
-  othernames: Helen
+  qualifications: Nobel Prize, PhD
+- familyname: xxxxx
+  othernames: xxxxx
   address: Monash University
-- familyname: xxx
-  othernames: xxx
-  address: Monash University
+  qualifications: Nobel Prize, PhD
 department: Department of\newline Econometrics &\newline Business Statistics
 organization: Acme Corporation
 bibliography: references.bib
@@ -29,6 +33,7 @@ output:
     toc: false
 ---
 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
 # Make sure you have the latest versions of rmarkdown and bookdown installed
@@ -41,14 +46,16 @@ library(kableExtra)
 
 
 # Introduction
+The dataset used is offenders dataset of Australia (@ABS).
+Packages used are @ggplot2, @tidyverse, @tinytex, @float, @lubridate, @readxl, @kable, @bookdown, @gridExtra, @here, @dplyr, and @readr
 
 # Analysis
 
-
-\newline
 \section*{body 1}
 
-\section*{body 2}
+\pagebreak
+
+\section*{Crime analysis by age group}
 ```{r reading-data}
 crime_age_201819 <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet = 4, range = "A5:M21")
 
@@ -94,7 +101,7 @@ combined_age$number_offences = as.numeric(combined_age$number_offences)
 
 ```
 
-```{r total-age, fig.cap= "Number of offenders across age group"}
+```{r age1, fig.cap="Total offenders across age groups"}
 combined_age %>% 
   group_by(age_group) %>%
   summarise(total = sum(number_offences)) %>%
@@ -107,7 +114,8 @@ combined_age %>%
   labs(title = "Distribution of Offenders by Age Group")  +
   coord_flip()
 ```
-Figure \@ref(fig:total-age) shows the distribution of offenders across age groups, with each bar representing the total number of offences for certain age group. The highest proportion of offenders is from the age of 20-24 years, followed by 25-29 and 15-19 years, while the lowest proportion of offenders is from the 60-64 years age group. This indicates that older people tend to not commit an offence and the majority of the offenders are young people.
+
+Figure \@ref(fig:age1) shows the distribution of offenders across age groups, with each bar representing the total number of offences for certain age group. The highest proportion of offenders is from the age of 20-24 years, followed by 25-29 and 15-19 years, while the lowest proportion of offenders is from 60-64 years age group. This indicates that older people tend to not commit an offence and the majority of offenders are young people.
 
 ```{r age-yearly-changes, fig.cap="Distribution of total offenders yearly"}
 combined_age %>% 
@@ -145,14 +153,13 @@ total_all <- total_1718 %>%
 kable(total_all, caption = "Changes in total offenders") %>%
   kable_styling(bootstrap_options = c("striped", "hover"))
 ```
-An interesting trend to notice from Figure \@ref(fig:age-yearly-changes) and Table \@ref(tab:summary-table) is that the number of offences for age group below 45 decreased in 2018-2019, while it increased for age group above 45. This is due to the structural ageing that is experienced by all Australian states and territories (@AIC). The overall changes however are not that high. Age group 10-14 years has the most significant change which is a decrease of 1310 or around -8.6%. And the age group with the least change is age group 35-39 years which is only a decrease of 68. The number of offences commited by the middle age groups do not change much.  
+An interesting trend to notice from Figure \@ref(fig:age-yearly-changes) and Table \@ref(tab:summary-table) is that the number of offences for age group below 45 decreased in 2018-2019, while it increased for age group above 45. This is due to the structural ageing that is experienced by all Australian states and territories (@AIC). The overall changes however are not that high. Age group 10-14 years has the most significant change which is a decrease of 1310 or around -8.6%. And the age group with the least change is 35-39 years which is only a decrease of 68. The number of offences commited by middle age groups do not change much.  
 
-Next, we are looking at the top three highest age group in more details.  
-```{r top-3, fig.cap="Top 3 highest age group's principal offence distribution"}
-top3age <- combined_age %>% 
-  filter(age_group %in% c("20–24 years", "15–19 years", "25–29 years")) 
+Next, we are looking at the top three highest and lowest age group in more details.  
 
-top3age %>%
+```{r topage, fig.cap="Top three highest age group principal offences"}
+combined_age %>% 
+  filter(age_group %in% c("20–24 years", "15–19 years", "25–29 years")) %>%
   group_by(age_group, principal_offence, Year) %>%
   summarise(total = sum(number_offences)) %>%
   ggplot() +
@@ -166,14 +173,12 @@ top3age %>%
   labs(title = "Number of Principal Offences in Highest 3 Age Group") +
   theme(axis.text.x = element_blank())
 ```
-From \@ref(fig:top-3), we can see a clear trend here that all age group has the highest number of offences in principal offence number 10, which is illicit drug offences. However, the number is decreasing in 2018-2019, which is resulted from 'lower level' offences being diverted from the courts (@AIHW). While the changes in other types of offence seem to be little, the changes for "Public order offences" seems to be high.
 
-Next, we are contrasting the lowest 3 age groups.  
-```{r lowest-3, fig.cap="Lowest 3 age group's principal offence distribution"}
-lowest3age <- combined_age %>% 
-  filter(age_group %in% c("55–59 years", "60–64 years", "65 years and over")) 
+From Figure \@ref(fig:topage), we can see a clear trend here that all age group has the highest number of offences in illicit drug offences. However, the number is decreasing in 2018-2019, which is resulted from 'lower level' offences being diverted from the courts (@AIHW). While the changes in other types of offence seem to be little, the changes for "Public order offences" seems to be high.
 
-lowest3age %>%
+```{r lowestage, fig.cap="Lowest three highest age group principal offences"}
+combined_age %>% 
+  filter(age_group %in% c("55–59 years", "60–64 years", "65 years and over")) %>%
   group_by(age_group, principal_offence, Year) %>%
   summarise(total = sum(number_offences)) %>%
   ggplot() +
@@ -187,7 +192,10 @@ lowest3age %>%
   labs(title = "Number of Principal Offences in Lowest 3 Age Group") +
   theme(axis.text.x = element_blank())
 ```
-Figure \@ref(fig:lowest-3) illustrates the distribution of total offenders in each principal offences for the lowest 3 age groups. There are some differences compared to the top 3 age groups. The highest principal offence for these lowest 3 groups is "Acts intended to cause injury". Interesting findings here are that total offenders in "Illicit drug offences" decreased as the age group moves up and also "Offences against justice" and "Miscellaneous offences" tend to be higher in older ages compared to younger ages. While most of the offence types experienced an increase over time, one similar finding as in the top 3 data is that there is a significant decrease in "Public order offences".
+
+Figure \@ref(fig:lowestage) illustrates the distribution of total offenders in each principal offences for the lowest 3 age groups. There are some differences compared to the top 3 age groups. The highest principal offence for these lowest 3 groups is "Acts intended to cause injury". Interesting findings here are that total offenders in "Illicit drug offences" decreased as the age group moves up and also "Offences against justice" and "Miscellaneous offences" tend to be higher in older ages compared to younger ages. While most of the offence types experienced an increase over time, one similar finding as in the top 3 data is that there is a significant decrease in "Public order offences".
+
+\pagebreak
 
 \section*{body 3}
 
