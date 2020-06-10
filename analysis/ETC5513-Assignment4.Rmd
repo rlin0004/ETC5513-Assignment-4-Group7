@@ -49,6 +49,17 @@ library(kableExtra)
 
 # Introduction
 
+The number and rate of offences in Australia are affected by various factors. In recent year, Australia is continually strengthening law enforcement. Although this can reduce the offence rate, the number of offences is also rising with the continuous increase of the population. This report shows the current status of criminal activity in Australia and changes in criminal activity in terms of age, gender, states or territories, and police proceeding.
+
+In the first section, look at the offenders by age group in Australia. The purpose is to explore the distribution of offenders across age groups, what principal offences account for the majority of the offences in each age group, and the changes in the number of offenders by year. By conducting this analysis, an overview of the distribution and trend of the number of offenders by age group can be obtained.  
+
+Although the status of female offence in modern society is more prominent than in the past, it is a recognised fact that in general, under various social systems and historical conditions, the proportion of female offenders in the total number of offenders is significantly lower. At the same time, the gender difference in the number of offences has more significant uncertainty. We will analyse the number and rate of offenders for each gender and explore the yearly changes of the offences on each gender group in the second section. 
+
+For section three, we analyse the crime statistics on states or territories in Australia. The intention is to explore how the primary offences take account in each state or territory in 2018, and which state or territory have competitively higher crime rates. By analysing the crime statistics on states or territories, the report will offer insights on how each state or territory differs on the frequency of primary offences recorded.
+
+Furthermore, in the fourth section, we analyse the court actions of offenders in Australia. The purpose of this section is to investigate the distribution of court and non-court actions of offenders in each state, and which specific crime will be resulting in more court actions than non-court actions.  By analyse the court actions of the criminal, we also provide some detailed explanations and the possible reason to cause this phenomenon.
+
+
 # Analysis
 
 \section*{Gender difference in the number and rate of offences}

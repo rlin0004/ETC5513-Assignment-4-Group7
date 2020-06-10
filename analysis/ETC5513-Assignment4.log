@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.4.9)  9 JUN 2020 20:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.4.9)  10 JUN 2020 15:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1452,78 +1452,78 @@ File: ETC5513-Assignment4_files/figure-latex/gender1-1.pdf Graphic file (type p
 df)
 <use ETC5513-Assignment4_files/figure-latex/gender1-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/gender1-1.pdf  
-used on input line 325.
+used on input line 335.
 (pdftex.def)             Requested size: 427.59645pt x 352.31538pt.
 LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
-(Font)              scaled to size 10.51207pt on input line 326.
+(Font)              scaled to size 10.51207pt on input line 336.
 LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 10.51207pt on input line 326.
-[2 <./ETC5513-Assignment4_files/figure-latex/gender1-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/gender2-1.pdf, id=45, 578.16pt x 346.29
+(Font)              scaled to size 10.51207pt on input line 336.
+[2] [3 <./ETC5513-Assignment4_files/figure-latex/gender1-1.pdf>]
+<ETC5513-Assignment4_files/figure-latex/gender2-1.pdf, id=49, 578.16pt x 346.29
 375pt>
 File: ETC5513-Assignment4_files/figure-latex/gender2-1.pdf Graphic file (type p
 df)
 <use ETC5513-Assignment4_files/figure-latex/gender2-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/gender2-1.pdf  
-used on input line 379.
+used on input line 389.
 (pdftex.def)             Requested size: 455.24165pt x 272.67078pt.
-[3]
-<ETC5513-Assignment4_files/figure-latex/gender3-1.pdf, id=53, 572.1375pt x 349.
+[4]
+<ETC5513-Assignment4_files/figure-latex/gender3-1.pdf, id=57, 572.1375pt x 349.
 305pt>
 File: ETC5513-Assignment4_files/figure-latex/gender3-1.pdf Graphic file (type p
 df)
 <use ETC5513-Assignment4_files/figure-latex/gender3-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/gender3-1.pdf  
-used on input line 387.
+used on input line 397.
 (pdftex.def)             Requested size: 455.24872pt x 277.94131pt.
-[4 <./ETC5513-Assignment4_files/figure-latex/gender2-1.pdf>] [5 <./ETC5513-Assi
+[5 <./ETC5513-Assignment4_files/figure-latex/gender2-1.pdf>] [6 <./ETC5513-Assi
 gnment4_files/figure-latex/gender3-1.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+mdbch on input line
- 447.
+ 457.
 
 (/Users/eavenj/Library/TinyTeX/texmf-dist/tex/latex/mathdesign/mdbch/ts1mdbch.f
 d
 File: ts1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdbch.
 )
 LaTeX Font Info:    Font shape `TS1/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 447.
+(Font)              scaled to size 10.51207pt on input line 457.
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--449
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 449--451
+Underfull \hbox (badness 10000) in paragraph at lines 457--459
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--453
+Underfull \hbox (badness 10000) in paragraph at lines 459--461
 
  []
 
 
-LaTeX Warning: Empty bibliography on input line 463.
+Underfull \hbox (badness 10000) in paragraph at lines 461--463
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 465.
-[6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 465.
+ []
+
+
+LaTeX Warning: Empty bibliography on input line 473.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 475.
+[7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 475.
 (./ETC5513-Assignment4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 465.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 465.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 475.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 475.
 Package rerunfilecheck Info: File `ETC5513-Assignment4.out' has not changed.
 (rerunfilecheck)             Checksum: 0048FDBBEE338C2B3269EB508516D755;315.
 Package logreq Info: Writing requests to 'ETC5513-Assignment4.run.xml'.
 \openout1 = `ETC5513-Assignment4.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 465.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 475.
  ) 
 Here is how much of TeX's memory you used:
- 26012 strings out of 482913
- 427010 string characters out of 5958499
+ 26037 strings out of 482913
+ 427272 string characters out of 5958499
  1095568 words of memory out of 5000000
  40703 multiletter control sequences out of 15000+600000
- 628380 words of font info for 202 fonts, out of 8000000 for 9000
+ 629790 words of font info for 220 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  45i,15n,91p,955b,792s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/eavenj/Library/TinyTeX/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}{/
@@ -1537,10 +1537,10 @@ harter/bchri8a.pfb></Users/eavenj/Library/TinyTeX/texmf-dist/fonts/type1/public
 /bera/fvsb8a.pfb></Users/eavenj/Library/TinyTeX/texmf-dist/fonts/type1/public/b
 era/fvsr8a.pfb></Users/eavenj/Library/TinyTeX/texmf-dist/fonts/type1/public/mat
 hdesign/mdbch/md-chr8t.pfb>
-Output written on ETC5513-Assignment4.pdf (6 pages, 7531090 bytes).
+Output written on ETC5513-Assignment4.pdf (7 pages, 7533555 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 95 compressed objects within 1 object stream
- 19 named destinations out of 1000 (max. 500000)
+ 127 PDF objects out of 1000 (max. 8388607)
+ 100 compressed objects within 1 object stream
+ 20 named destinations out of 1000 (max. 500000)
  30765 words of extra memory for PDF output out of 35830 (max. 10000000)
 
