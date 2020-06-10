@@ -1,16 +1,20 @@
 ---
-title: "ETC5513 Assignment4 Group7"
+title: "ETC5513 Assignment 4 Group 7"
 author:
+- familyname: xxxx
+  othernames: xxxx
+  address: Monash University
+  email: xxxxxxxxxx
+  correspondingauthor: true
+  qualifications: Nobel Prize, PhD
 - familyname: xxxxx
   othernames: xxxxx
   address: Monash University
-  correspondingauthor: true
-- familyname: xxx
-  othernames: xxx
+  qualifications: Nobel Prize, PhD
+- familyname: Lin
+  othernames: Ruimin
   address: Monash University
-- familyname: xxx
-  othernames: xxx
-  address: Monash University
+  qualifications: BA
 department: Department of\newline Econometrics &\newline Business Statistics
 organization: Acme Corporation
 bibliography: references.bib
@@ -40,14 +44,388 @@ library(ggplot2)
 
 # Analysis
 
+
 \section*{body 1}
 
 \section*{body 2}
 
-\section*{body 3}
+\section*{Crime analysis by State and Territory}
+
+```{r library}
+library(tidyverse)
+library(readxl)
+library(lubridate)
+library(gridExtra)
+library(knitr)
+library(bookdown)
+```
+
+ In this section, we are exploring the Australian crime statistics between states/territories. The analysis will be exploring which state has the highest crime rates, and what principal offence accounts for a large proportion.
+
+```{r nsw-cleaning}
+nsw <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 3, range = "A6:L39")
+```
+
+```{r nsw-cleaning1}
+nsw <- nsw %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+nsw <- nsw[-c(16),] 
+
+```
+
+```{r nsw-cleaning2}
+nsw <- nsw %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("NSW", 30))
+
+nsw$`2008–09` = as.double(nsw$`2008–09`)
+
+nsw1 <- nsw %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r}
+vic <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 4, range = "A6:L39")
+```
+
+```{r vic-cleaning1}
+vic <- vic %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+vic <- vic[-c(16),] 
+
+```
+
+```{r vic-cleaning2}
+vic <- vic %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("VIC", 30))
+
+vic$`2008–09` = as.double(vic$`2008–09`)
+
+vic1 <- vic %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r qld-cleaning}
+qld <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 5, range = "A6:L39")
+```
+
+```{r qld-cleaning1}
+qld <- qld %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+qld <- qld[-c(16),] 
+
+```
+
+```{r qld-cleaning2}
+qld <- qld %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("QLD", 30))
+
+qld$`2008–09` = as.double(qld$`2008–09`)
+
+qld1 <- qld %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r}
+sa <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 6, range = "A6:L39")
+```
+
+```{r sa-cleaning1}
+sa <- sa %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+sa <- sa[-c(16),] 
+
+```
+
+```{r sa-cleaning2}
+sa <- sa %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("SA", 30))
+
+sa$`2008–09` = as.double(sa$`2008–09`)
+
+sa1 <- sa %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r}
+wa <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 7, range = "A6:L39")
+```
+
+```{r wa-cleaning1}
+wa <- wa %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+wa <- wa[-c(16),] 
+
+```
+
+```{r wa-cleaning2}
+wa <- wa %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("WA", 30))
+
+wa$`2008–09` = as.double(wa$`2008–09`)
+
+wa1 <- wa %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r}
+tas <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 8, range = "A6:L39")
+```
+
+```{r tas-cleaning1}
+tas <- tas %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+tas <- tas[-c(16),] 
+
+```
+
+```{r tas-cleaning2}
+tas <- tas %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("TAS", 30))
+
+tas$`2008–09` = as.double(tas$`2008–09`)
+
+tas1 <- tas %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r}
+nt <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 9, range = "A6:L39")
+```
+
+```{r nt-cleaning1}
+nt <- nt %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+nt <- nt[-c(16),] 
+
+```
+
+```{r nt-cleaning2}
+nt <- nt %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("NT", 30))
+
+nt$`2008–09` = as.double(nt$`2008–09`)
+
+nt1 <- nt %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r}
+act <- read_excel(here::here("data/2.+offenders,+states+and+territories.xls"), sheet = 10, range = "A6:L39")
+```
+
+```{r act-cleaning1}
+act <- act %>% 
+  dplyr::filter(!is.na(`Principal offence`))
+
+act <- act[-c(16),] 
+
+```
+
+```{r act-cleaning2}
+act <- act %>% 
+  dplyr::filter(!is.na(`Principal offence`)) %>%
+  mutate(state = rep("ACT", 30))
+
+act$`2008–09` = as.double(act$`2008–09`)
+
+act1 <- act %>% 
+  pivot_longer(cols = `2008–09`:`2018–19`,
+               names_to = "Year", 
+               values_to = "cases") %>%
+   mutate(Year = year(as.Date(Year, "%Y")))
+```
+
+```{r join1}
+join1 <- full_join(
+  nsw1,
+  vic1,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join2 <- full_join(
+  qld1,
+  sa1,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join3 <- full_join(
+  wa1,
+  tas1,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join4 <- full_join(
+  nt1,
+  act1,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join5 <- full_join(
+  join1,
+  join2,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+join6 <- full_join(
+  join3,
+  join4,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+
+state_crime <- full_join(
+  join5,
+  join6,
+  by = c("Principal offence" = "Principal offence",
+         "state" = "state",
+         "Year" = "Year",
+         "cases" = "cases"))
+state_crime$Year = as.factor(state_crime$Year)
+```
+
+```{r graph1, fig.cap="state-crime"}
+state_crime %>%
+  group_by(state) %>%
+  ggplot(aes(state, cases,
+             colour = state,
+             fill = state)) +
+  geom_col()
+
+```
+
+ The figure above demonstrates high crime cases recorded by NSW, QLD, SA, VIC and WA. However, the high number of crime cases recorded in these states may due to its high population compared to other states/territories like ACT, NT and TAS.
+ 
+ Next, We'd like to look into the frequency of the principal offence in 2018 for top 4 crime-level states. (NSW, QLD, SA and VIC)
+ 
+```{r}
+nsw_crime2018 <- state_crime %>%
+  dplyr::filter(state == "NSW",
+                Year == "2018")
+
+qld_crime2018 <- state_crime %>%
+  dplyr::filter(state == "QLD",
+                Year == "2018")
+
+sa_crime2018 <- state_crime %>%
+  dplyr::filter(state == "SA",
+                Year == "2018")
+
+vic_crime2018 <- state_crime %>%
+  dplyr::filter(state == "VIC",
+                Year == "2018")
+```
+
+```{r nsw, fig.cap = "NSW crime 2018"}
+nsw_crime2018 %>%
+  ggplot(aes(`Principal offence`, cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("NSW crime 2018")
+```
+
+ The figure \@ref(fig:nsw) demonstrates that 02 Acts intended to cause injury takes the largest proportion in NSW's 2018 crime statistics.
+ 
+```{r qld, fig.cap="QLD crime 2018"}
+qld_crime2018 %>%
+  ggplot(aes(`Principal offence`, cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("QLD crime 2018")
+```
+
+  The figure \@ref(fig:qld) demonstrates that 10 Illicit drug offences takes the largest proportion in QLD's 2018 crime statistics. So why some states like QLD have drug offences on rife? Tony Fleming explains in the brisbane times that, “Largely it is because the Valley and CBD is a night and party precinct. A lot of the drug use is associated with people socialising and whatnot."*(@brisbanetimes2019)*
+  
+```{r sa, fig.cap="SA crime 2018"}
+sa_crime2018 %>%
+  ggplot(aes(`Principal offence`, cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("SA crime 2018")
+```
+
+ The figure \@ref(fig:sa) also represents the outstanding proportion of 10 Illicit drug offences in South Australia's 2018 crime statistics.
+ 
+```{r vic, fig.cap="VIC crime 2018", fig.width=7}
+vic_crime2018 %>%
+  ggplot(aes(`Principal offence`, cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("VIC crime 2018")
+```
+
+  In the figure \@ref(fig:vic), 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
+  
+```{r table}
+crime2018 <- state_crime %>%
+  dplyr::filter(Year == "2018") %>%
+  mutate(total_cases = sum(cases),
+         proportion = (cases/total_cases)*100) %>%
+  dplyr::select(state, proportion)  %>%
+  group_by(state) %>%
+  mutate(total_proportion = sum(proportion)) %>%
+  dplyr::select(state, total_proportion)
+
+crime2018 %>%
+  arrange() %>%
+  unique() %>%
+  knitr::kable(col.names = c("State", "Proportion"),
+                             caption = "Crime statistics 2018 AU")
+
+```
+
+ Furthermore, table \@ref(tab:table) also implies the top 4 states accounted for highest proportion of total crime cases recorded in Australia 2018.
 
 \section*{body 4}
 
 # Conclusion
+
+
+The crime offender’s dataset collected by the Australian Bureau of Statistics allows our group to analyse the insight of the crime circumstances in Australia by gender, age group, states/territories, and police proceedings. The number and rate of male offenders recorded in Australia are significantly higher than that of female offenders. Although the number of offences on both genders has increased in recent years, the growth rate in the number of male offenders is lower than that of females. The rate of male offenders has dropped far more than females. Besides, the majority of the proportion of offenders is from younger age groups. One interesting thing is that the number of offences for the age group below 45 decreased in 2018-2019, while it increased for the age group over 45. Even though the total number of offenders differs across age groups, the trend is pretty similar with 10, 2, 13 being the top three highest principal offences. On the other hand, through the visualisations created for crime statistics on states/territories, the report concludes the top 4 states/territories as NSW, QLD, SA, and VIC. The common grounds of these states are, QLD and SA both had ‘Illicit drug offences’ as the most frequent primary offence, whereas, NSW and VIC had ‘Acts intended to cause injury’. Lastly, it can be clearly concluded that most criminals will be prosecuted by the court in all states. But offenders in SA and TAS have a smaller proportion of criminals result in court action compared to other states. Most types of crime will result in court actions. However, public order offenses and miscellaneous offenses have less possibility to be litigated by the court.
 
 # Reference
