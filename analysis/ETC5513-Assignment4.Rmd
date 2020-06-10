@@ -7,10 +7,12 @@ author:
   email: xxxxxxxxxx
   correspondingauthor: true
   qualifications: Nobel Prize, PhD
-- familyname: xxxxx
-  othernames: xxxxx
+- familyname: Evangelina
+  othernames: Helen
   address: Monash University
-  qualifications: Nobel Prize, PhD
+  email: heva0001@student.monash.edu
+  correspondingauthor: true
+  qualifications: BComm
 - familyname: xxxxx
   othernames: xxxxx
   address: Monash University
@@ -46,8 +48,7 @@ library(kableExtra)
 
 
 # Introduction
-The dataset used is offenders dataset of Australia (@ABS).
-Packages used are @ggplot2, @tidyverse, @tinytex, @float, @lubridate, @readxl, @kable, @bookdown, @gridExtra, @here, @dplyr, and @readr
+
 
 # Analysis
 
@@ -151,7 +152,8 @@ total_all <- total_1718 %>%
   mutate(`Percentage Changes` = (Difference/`Total 2017-2018`)*100)
 
 kable(total_all, caption = "Changes in total offenders") %>%
-  kable_styling(bootstrap_options = c("striped", "hover"))
+  kable_styling(bootstrap_options = c("striped", "hover"),
+                latex_options = "HOLD_position")
 ```
 An interesting trend to notice from Figure \@ref(fig:age-yearly-changes) and Table \@ref(tab:summary-table) is that the number of offences for age group below 45 decreased in 2018-2019, while it increased for age group above 45. This is due to the structural ageing that is experienced by all Australian states and territories (@AIC). The overall changes however are not that high. Age group 10-14 years has the most significant change which is a decrease of 1310 or around -8.6%. And the age group with the least change is 35-39 years which is only a decrease of 68. The number of offences commited by middle age groups do not change much.  
 
@@ -202,5 +204,9 @@ Figure \@ref(fig:lowestage) illustrates the distribution of total offenders in e
 \section*{body 4}
 
 # Conclusion
+
+# Acknowledgement
+The dataset used is offenders dataset of Australia (@ABS).
+Packages used are @ggplot2, @tidyverse, @tinytex, @float, @lubridate, @readxl, @kable, @bookdown, @gridExtra, @here, @dplyr, and @readr.
 
 # Reference
