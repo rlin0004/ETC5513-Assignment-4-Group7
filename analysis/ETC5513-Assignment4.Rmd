@@ -11,10 +11,10 @@ author:
   othernames: xxxxx
   address: Monash University
   qualifications: Nobel Prize, PhD
-- familyname: xxxxx
-  othernames: xxxxx
+- familyname: Lin
+  othernames: Ruimin
   address: Monash University
-  qualifications: Nobel Prize, PhD
+  qualifications: BA
 department: Department of\newline Econometrics &\newline Business Statistics
 organization: Acme Corporation
 bibliography: references.bib
