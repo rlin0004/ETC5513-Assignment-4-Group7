@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.5.21)  11 JUN 2020 19:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.5.21)  11 JUN 2020 19:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1627,233 +1627,200 @@ LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
 \openout5 = `ETC5513-Assignment4.toc'.
 
 [2] [3]
-LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.24173pt on input line 341.
-
-Overfull \hbox (73.29054pt too wide) in paragraph at lines 343--343
-[]\T1/fvm/m/n/10.95 ## `summarise()` regrouping output by 'year', 'offence_type
-' (override with `.groups` argument)[] 
- []
-
 <ETC5513-Assignment4_files/figure-latex/gender1-1.pdf, id=44, 433.62pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/gender1-1.pdf Graphic file (type p
 df)
 <use ETC5513-Assignment4_files/figure-latex/gender1-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/gender1-1.pdf  
-used on input line 347.
+used on input line 343.
 (pdftex.def)             Requested size: 433.61894pt x 361.34912pt.
 LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 10.51207pt on input line 348.
+(Font)              scaled to size 10.51207pt on input line 344.
 [4 <./ETC5513-Assignment4_files/figure-latex/gender1-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/gender2-1.pdf, id=60, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/gender2-1.pdf, id=59, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/gender2-1.pdf Graphic file (type p
 df)
 <use ETC5513-Assignment4_files/figure-latex/gender2-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/gender2-1.pdf  
-used on input line 405.
+used on input line 397.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [5]
-<ETC5513-Assignment4_files/figure-latex/gender3-1.pdf, id=68, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/gender3-1.pdf, id=67, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/gender3-1.pdf Graphic file (type p
 df)
 <use ETC5513-Assignment4_files/figure-latex/gender3-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/gender3-1.pdf  
-used on input line 413.
+used on input line 405.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [6 <./ETC5513-Assignment4_files/figure-latex/gender2-1.pdf>] [7 <./ETC5513-Assi
 gnment4_files/figure-latex/gender3-1.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+mdbch on input line
- 473.
+ 465.
 
 (c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/mathdesign/mdbch/t
 s1mdbch.fd
 File: ts1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdbch.
 )
 LaTeX Font Info:    Font shape `TS1/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 473.
+(Font)              scaled to size 10.51207pt on input line 465.
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--475
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 475--477
+Underfull \hbox (badness 10000) in paragraph at lines 465--467
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 477--479
+Underfull \hbox (badness 10000) in paragraph at lines 467--469
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 469--471
 
  []
 
 [8]
-<ETC5513-Assignment4_files/figure-latex/age1-1.pdf, id=99, 578.16pt x 361.35pt>
+<ETC5513-Assignment4_files/figure-latex/age1-1.pdf, id=98, 578.16pt x 361.35pt>
 
 File: ETC5513-Assignment4_files/figure-latex/age1-1.pdf Graphic file (type pdf)
 
 <use ETC5513-Assignment4_files/figure-latex/age1-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/age1-1.pdf  use
-d on input line 492.
+d on input line 480.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
-
-Overfull \hbox (12.0918pt too wide) in paragraph at lines 500--500
-[]\T1/fvm/m/n/10.95 ## `summarise()` regrouping output by 'age_group' (override
- with `.groups` argument)[] 
- []
-
-<ETC5513-Assignment4_files/figure-latex/age-yearly-changes-1.pdf, id=101, 578.1
+<ETC5513-Assignment4_files/figure-latex/age-yearly-changes-1.pdf, id=100, 578.1
 6pt x 361.35pt>
 File: ETC5513-Assignment4_files/figure-latex/age-yearly-changes-1.pdf Graphic f
 ile (type pdf)
 <use ETC5513-Assignment4_files/figure-latex/age-yearly-changes-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/age-yearly-chan
-ges-1.pdf  used on input line 504.
+ges-1.pdf  used on input line 488.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [9 <./ETC5513-Assignment4_files/figure-latex/age1-1.pdf>] [10 <./ETC5513-Assign
 ment4_files/figure-latex/age-yearly-changes-1.pdf>]
-Overfull \hbox (128.92577pt too wide) in paragraph at lines 554--554
-[]\T1/fvm/m/n/10.95 ## `summarise()` regrouping output by 'age_group', 'princip
-al_offence' (override with `.groups` argument)[] 
- []
-
-<ETC5513-Assignment4_files/figure-latex/topage-1.pdf, id=126, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/topage-1.pdf, id=125, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/topage-1.pdf Graphic file (type pd
 f)
 <use ETC5513-Assignment4_files/figure-latex/topage-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/topage-1.pdf  u
-sed on input line 558.
+sed on input line 533.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
-
-Overfull \hbox (128.92577pt too wide) in paragraph at lines 566--566
-[]\T1/fvm/m/n/10.95 ## `summarise()` regrouping output by 'age_group', 'princip
-al_offence' (override with `.groups` argument)[] 
- []
-
-<ETC5513-Assignment4_files/figure-latex/lowestage-1.pdf, id=129, 578.16pt x 361
+<ETC5513-Assignment4_files/figure-latex/lowestage-1.pdf, id=128, 578.16pt x 361
 .35pt>
 File: ETC5513-Assignment4_files/figure-latex/lowestage-1.pdf Graphic file (type
  pdf)
 <use ETC5513-Assignment4_files/figure-latex/lowestage-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/lowestage-1.pdf
-  used on input line 570.
+  used on input line 541.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [11 <./ETC5513-Assignment4_files/figure-latex/topage-1.pdf>] [12 <./ETC5513-Ass
 ignment4_files/figure-latex/lowestage-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/graph1-1.pdf, id=154, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/graph1-1.pdf, id=153, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/graph1-1.pdf Graphic file (type pd
 f)
 <use ETC5513-Assignment4_files/figure-latex/graph1-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/graph1-1.pdf  u
-sed on input line 584.
+sed on input line 555.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
-<ETC5513-Assignment4_files/figure-latex/nsw-1.pdf, id=155, 578.16pt x 361.35pt>
+<ETC5513-Assignment4_files/figure-latex/nsw-1.pdf, id=154, 578.16pt x 361.35pt>
 
 File: ETC5513-Assignment4_files/figure-latex/nsw-1.pdf Graphic file (type pdf)
 <use ETC5513-Assignment4_files/figure-latex/nsw-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/nsw-1.pdf  used
- on input line 594.
+ on input line 565.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [13 <./ETC5513-Assignment4_files/figure-latex/graph1-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/qld-1.pdf, id=168, 578.16pt x 361.35pt>
+<ETC5513-Assignment4_files/figure-latex/qld-1.pdf, id=167, 578.16pt x 361.35pt>
 
 File: ETC5513-Assignment4_files/figure-latex/qld-1.pdf Graphic file (type pdf)
 <use ETC5513-Assignment4_files/figure-latex/qld-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/qld-1.pdf  used
- on input line 602.
+ on input line 573.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [14 <./ETC5513-Assignment4_files/figure-latex/nsw-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/sa-1.pdf, id=181, 578.16pt x 361.35pt>
+<ETC5513-Assignment4_files/figure-latex/sa-1.pdf, id=180, 578.16pt x 361.35pt>
 File: ETC5513-Assignment4_files/figure-latex/sa-1.pdf Graphic file (type pdf)
 <use ETC5513-Assignment4_files/figure-latex/sa-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/sa-1.pdf  used 
-on input line 610.
+on input line 581.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [15 <./ETC5513-Assignment4_files/figure-latex/qld-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/vic-1.pdf, id=194, 505.89pt x 361.35pt>
+<ETC5513-Assignment4_files/figure-latex/vic-1.pdf, id=193, 505.89pt x 361.35pt>
 
 File: ETC5513-Assignment4_files/figure-latex/vic-1.pdf Graphic file (type pdf)
 <use ETC5513-Assignment4_files/figure-latex/vic-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/vic-1.pdf  used
- on input line 618.
+ on input line 589.
 (pdftex.def)             Requested size: 455.25046pt x 325.17891pt.
 [16 <./ETC5513-Assignment4_files/figure-latex/sa-1.pdf>] [17 <./ETC5513-Assignm
 ent4_files/figure-latex/vic-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/zyliu1-1.pdf, id=219, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/zyliu1-1.pdf, id=218, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/zyliu1-1.pdf Graphic file (type pd
 f)
 <use ETC5513-Assignment4_files/figure-latex/zyliu1-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/zyliu1-1.pdf  u
-sed on input line 665.
+sed on input line 632.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
-
-Overfull \hbox (56.59998pt too wide) in paragraph at lines 676--676
-[]\T1/fvm/m/n/10.95 ## `summarise()` regrouping output by 'Principal offence' (
-override with `.groups` argument)[] 
- []
-
-<ETC5513-Assignment4_files/figure-latex/zyliu2-1.pdf, id=221, 578.16pt x 722.7p
+<ETC5513-Assignment4_files/figure-latex/zyliu2-1.pdf, id=220, 578.16pt x 722.7p
 t>
 File: ETC5513-Assignment4_files/figure-latex/zyliu2-1.pdf Graphic file (type pd
 f)
 <use ETC5513-Assignment4_files/figure-latex/zyliu2-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/zyliu2-1.pdf  u
-sed on input line 680.
+sed on input line 643.
 (pdftex.def)             Requested size: 455.24165pt x 569.05206pt.
 [18 <./ETC5513-Assignment4_files/figure-latex/zyliu1-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/zyliu3-1.pdf, id=234, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/zyliu3-1.pdf, id=233, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/zyliu3-1.pdf Graphic file (type pd
 f)
 <use ETC5513-Assignment4_files/figure-latex/zyliu3-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/zyliu3-1.pdf  u
-sed on input line 691.
+sed on input line 654.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [19 <./ETC5513-Assignment4_files/figure-latex/zyliu2-1.pdf>]
-Overfull \hbox (39.90941pt too wide) in paragraph at lines 704--704
-[]\T1/fvm/m/n/10.95 ## `summarise()` regrouping output by 'States', 'Year' (ove
-rride with `.groups` argument)[] 
- []
-
-<ETC5513-Assignment4_files/figure-latex/zyliu4-1.pdf, id=247, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/zyliu4-1.pdf, id=246, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/zyliu4-1.pdf Graphic file (type pd
 f)
 <use ETC5513-Assignment4_files/figure-latex/zyliu4-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/zyliu4-1.pdf  u
-sed on input line 712.
+sed on input line 667.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [20 <./ETC5513-Assignment4_files/figure-latex/zyliu3-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/zyliu5-1.pdf, id=259, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/zyliu5-1.pdf, id=258, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/zyliu5-1.pdf Graphic file (type pd
 f)
 <use ETC5513-Assignment4_files/figure-latex/zyliu5-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/zyliu5-1.pdf  u
-sed on input line 723.
+sed on input line 678.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [21 <./ETC5513-Assignment4_files/figure-latex/zyliu4-1.pdf>]
-<ETC5513-Assignment4_files/figure-latex/zyliu6-1.pdf, id=271, 578.16pt x 361.35
+<ETC5513-Assignment4_files/figure-latex/zyliu6-1.pdf, id=270, 578.16pt x 361.35
 pt>
 File: ETC5513-Assignment4_files/figure-latex/zyliu6-1.pdf Graphic file (type pd
 f)
 <use ETC5513-Assignment4_files/figure-latex/zyliu6-1.pdf>
 Package pdftex.def Info: ETC5513-Assignment4_files/figure-latex/zyliu6-1.pdf  u
-sed on input line 734.
+sed on input line 689.
 (pdftex.def)             Requested size: 455.24165pt x 284.52603pt.
 [22 <./ETC5513-Assignment4_files/figure-latex/zyliu5-1.pdf>] [23 <./ETC5513-Ass
-ignment4_files/figure-latex/zyliu6-1.pdf>] [24] [25]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 755.
+ignment4_files/figure-latex/zyliu6-1.pdf>] [24]
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 9.24173pt on input line 708.
+[25]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 710.
 [26]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 755.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 710.
 (./ETC5513-Assignment4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 755.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 755.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 710.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 710.
 Package rerunfilecheck Info: File `ETC5513-Assignment4.out' has not changed.
 (rerunfilecheck)             Checksum: 71E84218791918312FD66C504B7B353D;445.
 
@@ -1866,19 +1833,19 @@ Package biblatex Warning: Please rerun LaTeX.
 Package logreq Info: Writing requests to 'ETC5513-Assignment4.run.xml'.
 \openout1 = `ETC5513-Assignment4.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 755.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 710.
  ) 
 Here is how much of TeX's memory you used:
  26634 strings out of 482424
  444904 string characters out of 5946523
- 1100629 words of memory out of 5000000
+ 1099629 words of memory out of 5000000
  41631 multiletter control sequences out of 15000+600000
  636378 words of font info for 292 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  45i,15n,91p,1709b,1449s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/ly1/texnan
-si.enc}{c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/
-8r.enc}{c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/fonta
+{c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.en
+c}{c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/ly1/texnan
+si.enc}{c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/fonta
 wesome/fontawesometwo.enc}<c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fo
 nts/type1/public/fontawesome/FontAwesome.pfb><c:/Users/lrmbl/AppData/Roaming/Ti
 nyTeX/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb><c:/Users/lrmbl/AppDat
@@ -1889,7 +1856,7 @@ vmr8a.pfb><c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
 /bera/fvsb8a.pfb><c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1
 /public/bera/fvsr8a.pfb><c:/Users/lrmbl/AppData/Roaming/TinyTeX/texmf-dist/font
 s/type1/public/mathdesign/mdbch/md-chr8t.pfb>
-Output written on ETC5513-Assignment4.pdf (26 pages, 7663335 bytes).
+Output written on ETC5513-Assignment4.pdf (26 pages, 7661930 bytes).
 PDF statistics:
  402 PDF objects out of 1000 (max. 8388607)
  325 compressed objects within 4 object streams

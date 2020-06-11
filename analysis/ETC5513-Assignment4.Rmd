@@ -109,7 +109,7 @@ gender <- bind_rows(male_count, female_count, both_count) %>%
                values_to = "count")
 ```
 
-```{r gender1, fig.width=6, fig.cap="Yearly average offence records of different offence type"}
+```{r gender1, fig.width=6, fig.cap="Yearly average offence records of different offence type", warning=FALSE, echo=FALSE, message=FALSE}
 gender %>%
   filter(sex != "both",
          offence_type != "Total") %>%
@@ -126,7 +126,7 @@ gender %>%
 As showing in Figure \@ref(fig:gender1), each bar represents the average number of records for each type of offence and gender over the ten years. The overall offence recorded that the number of male offenders is significantly higher than female offenders. The highest number of offence type for males are “Acts intended to cause injury” and for females are “Theft”.  
 
 
-```{r gendersumm}
+```{r gendersumm, warning=FALSE, echo=FALSE, message=FALSE}
 gender %>%
   pivot_wider(names_from = sex, values_from = count) %>%
   select(- both) %>%
@@ -314,7 +314,7 @@ combined_age$number_offences = as.numeric(combined_age$number_offences)
 
 ```
 
-```{r age1, fig.cap="Total offenders across age groups"}
+```{r age1, fig.cap="Total offenders across age groups", warning=FALSE, echo=FALSE, message=FALSE}
 combined_age %>% 
   group_by(age_group) %>%
   summarise(total = sum(number_offences)) %>%
@@ -330,7 +330,7 @@ combined_age %>%
 
 Figure \@ref(fig:age1) shows the distribution of offenders across age groups, with each bar representing the total number of offences for certain age group. The highest proportion of offenders is from the age of 20-24 years, followed by 25-29 and 15-19 years, while the lowest proportion of offenders is from 60-64 years age group. This indicates that older people tend to not commit an offence and the majority of offenders are young people.
 
-```{r age-yearly-changes, fig.cap="Distribution of total offenders yearly"}
+```{r age-yearly-changes, fig.cap="Distribution of total offenders yearly",warning=FALSE, echo=FALSE, message=FALSE}
 combined_age %>% 
   group_by(age_group, Year) %>%
   summarise(total = sum(number_offences)) %>%
@@ -346,7 +346,7 @@ combined_age %>%
   theme(axis.text.x = element_blank())
 ```
 
-```{r summary-table}
+```{r summary-table, warning=FALSE, echo=FALSE, message=FALSE}
 total_1718 <- combined_age %>%
   filter(Year == "2017-2018") %>%
   group_by(age_group) %>%
@@ -371,7 +371,7 @@ An interesting trend to notice from Figure \@ref(fig:age-yearly-changes) and Tab
 
 Next, we are looking at the top three highest and lowest age group in more details.  
 
-```{r topage, fig.cap="Top three highest age group principal offences"}
+```{r topage, fig.cap="Top three highest age group principal offences", warning=FALSE, echo=FALSE, message=FALSE}
 combined_age %>% 
   filter(age_group %in% c("20–24 years", "15–19 years", "25–29 years")) %>%
   group_by(age_group, principal_offence, Year) %>%
@@ -390,7 +390,7 @@ combined_age %>%
 
 From Figure \@ref(fig:topage), we can see a clear trend here that all age group has the highest number of offences in illicit drug offences. However, the number is decreasing in 2018-2019, which is resulted from 'lower level' offences being diverted from the courts (@AIHW). While the changes in other types of offence seem to be little, the changes for "Public order offences" seems to be high.
 
-```{r lowestage, fig.cap="Lowest three highest age group principal offences"}
+```{r lowestage, fig.cap="Lowest three highest age group principal offences", warning=FALSE, echo=FALSE, message=FALSE}
 combined_age %>% 
   filter(age_group %in% c("55–59 years", "60–64 years", "65 years and over")) %>%
   group_by(age_group, principal_offence, Year) %>%
@@ -876,7 +876,7 @@ NT does not have any information about the court action, therefore, in this part
 
 The figure \@ref(fig:zyliu1) show more offenders will be prosecuted by the court than others. But offenders in SA and TAS have a smaller proportion of criminals result in court action compared to other states in the past ten years. TAS and ACT have the least of the criminals result in court action compared to other states.
 
-```{r zyliu1, fig.cap="Distribution of Offenders by Action type", fig.align='center'}
+```{r zyliu1, fig.cap="Distribution of Offenders by Action type", fig.align='center', warning=FALSE, echo=FALSE, message=FALSE}
 procced %>% 
   group_by(States, Action) %>%
   summarise(Cases = sum(Cases)) %>%
@@ -892,7 +892,7 @@ procced %>%
 From Figure \@ref(fig:zyliu2) Most types of crime will result in court actions. However, public order offenses and miscellaneous offenses have less possibility to be litigated by the court. 
 
 
-```{r zyliu2, fig.cap="Distribution of court actions by offence type",fig.height= 10, fig.align='center'}
+```{r zyliu2, fig.cap="Distribution of court actions by offence type",fig.height= 10, fig.align='center', warning=FALSE, echo=FALSE, message=FALSE}
 procced %>% 
   group_by(`Principal offence`, Action) %>%
   summarise(Cases = sum(Cases)) %>%
@@ -917,7 +917,7 @@ procced %>%
   facet_wrap(~Action)
 ```
 
-```{r zyliu_clean}
+```{r zyliu_clean, warning=FALSE, echo=FALSE, message=FALSE}
 procced_year <-procced %>% 
   group_by(States, Year) %>%
   summarise(Cases = sum(Cases)) 
