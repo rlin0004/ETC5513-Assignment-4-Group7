@@ -45,13 +45,16 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
-# Make sure you have the latest versions of rmarkdown and bookdown installed
+
 library(ggplot2)
 library(tidyverse)
 library(readxl)
 library(lubridate)
 library(here)
 library(kableExtra)
+library(gridExtra)
+library(knitr)
+library(bookdown)
 ```
 
 
@@ -120,7 +123,6 @@ gender %>%
 As showing in Figure \@ref(fig:gender1), each bar represents the average number of records for each type of offence and gender over the ten years. The overall offence recorded that the number of male offenders is significantly higher than female offenders. The highest number of offence type for males are “Acts intended to cause injury” and for females are “Theft”.  
 
 
->>>>>>> 246c19fc5e2b191eef09926259fac0cd436731a7
 
 ```{r gendersumm}
 gender %>%
@@ -409,14 +411,6 @@ Figure \@ref(fig:lowestage) illustrates the distribution of total offenders in e
 
 \section*{Crime analysis by State and Territory}
 
-```{r library}
-library(tidyverse)
-library(readxl)
-library(lubridate)
-library(gridExtra)
-library(knitr)
-library(bookdown)
-```
 
  In this section, we are exploring the Australian crime statistics between states/territories. The analysis will be exploring which state has the highest crime rates, and what principal offence accounts for a large proportion.
 
@@ -778,6 +772,9 @@ crime2018 %>%
 ```
 
  Furthermore, table \@ref(tab:table) also implies the top 4 states accounted for highest proportion of total crime cases recorded in Australia 2018.
+
+\pagebreak
+
 
 \section*{body 4}
 
