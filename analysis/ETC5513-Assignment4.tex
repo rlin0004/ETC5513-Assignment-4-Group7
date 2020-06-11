@@ -199,11 +199,11 @@
 \DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
 \makeatother
 
-\author{\sf\Large\textbf{ Yiwen Jiang}\\ {\sf\large BComm\\[0.5cm]} \sf\Large\textbf{ Helen Evangelina}\\ {\sf\large BComm\\[0.5cm]} \sf\Large\textbf{ Ruimin Lin}\\ {\sf\large BComm\\[0.5cm]} \sf\Large\textbf{ XXX XXX}\\ {\sf\large XXX\\[0.5cm]}}
+\author{\sf\Large\textbf{ Yiwen Jiang}\\ {\sf\large BComm\\[0.5cm]} \sf\Large\textbf{ Helen Evangelina}\\ {\sf\large BComm\\[0.5cm]} \sf\Large\textbf{ Ruimin Lin}\\ {\sf\large BComm\\[0.5cm]} \sf\Large\textbf{ Zeyu liu}\\ {\sf\large BComm\\[0.5cm]}}
 
 \date{\sf\Date~\Month~\Year}
 \makeatletter
-\lfoot{\sf Jiang, Evangelina, Lin, XXX: \@date}
+\lfoot{\sf Jiang, Evangelina, Lin, liu: \@date}
 \makeatother
 
 
@@ -354,6 +354,50 @@ As showing in Figure \ref{fig:gender1}, each bar represents the average number o
 ## `summarise()` ungrouping output (override with `.groups` argument)
 \end{verbatim}
 
+\begin{table}[H]
+
+\caption{\label{tab:gendersumm}Summary of yearly average number of offences}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}[t]{l|r|r|l}
+\hline
+Offence Type & Male & Female & Result\\
+\hline
+01 Homicide and related offences & 614.7 & 114.1 & Males are 5.39 times higher\\
+\hline
+02 Acts intended to cause injury & 57770.5 & 15729.0 & Males are 3.67 times higher\\
+\hline
+03 Sexual assault and related offences & 6756.7 & 397.2 & Males are 17.01 times higher\\
+\hline
+04 Dangerous/negligent acts & 1650.2 & 360.5 & Males are 4.58 times higher\\
+\hline
+05 Abduction/harassment & 3320.8 & 728.9 & Males are 4.56 times higher\\
+\hline
+06 Robbery/extortion & 3034.2 & 556.7 & Males are 5.45 times higher\\
+\hline
+07 Unlawful entry with intent & 11305.4 & 2005.5 & Males are 5.64 times higher\\
+\hline
+08 Theft & 31245.6 & 20435.6 & Males are 1.53 times higher\\
+\hline
+09 Fraud/deception & 7029.2 & 3732.1 & Males are 1.88 times higher\\
+\hline
+10 Illicit drug offences & 54745.5 & 15374.8 & Males are 3.56 times higher\\
+\hline
+11 Weapons/explosives & 9737.7 & 1443.4 & Males are 6.75 times higher\\
+\hline
+12 Property damage and environmental pollution & 14539.6 & 3268.2 & Males are 4.45 times higher\\
+\hline
+13 Public order offences & 54268.5 & 13303.9 & Males are 4.08 times higher\\
+\hline
+15 Offences against justice & 20230.7 & 5397.5 & Males are 3.75 times higher\\
+\hline
+16 Miscellaneous offences & 17153.3 & 2975.1 & Males are 5.77 times higher\\
+\hline
+Total & 308136.3 & 90450.5 & Males are 3.41 times higher\\
+\hline
+\end{tabular}}
+\end{table}
+
 If we look at the summary (Refer to Table \ref{tab:gendersumm}), the result also indicates that in all the offence types, the number of male offenders is significantly higher than female offenders. The ``Sexual assault and related offence'' is the most significant difference between the number of males and females, and the average number of males is about 17 times higher than females. The difference in ``Theft'' is relatively minimal; males are about 1.53 times higher than females. Over the ten years, the average number of male offenders is 4.42 times higher than that of females.
 
 \begin{figure}
@@ -372,7 +416,54 @@ From Figure \ref{fig:gender2}, we can observe that the yearly changes on the num
 
 In Figure \ref{fig:gender3}, it represents the offender rate on both genders; the rate indicates the number of offenders in 100,000 people. In 2009, the rate was 2,062 offenders in 100,000 people. After the overall trend is decreasing, in 2018, there are about 1,794 offenders in 100,000 people. The rate decreased to their lowest levels in six years.
 
+\begin{table}[H]
+
+\caption{\label{tab:gendersumm2}Yearly change rate of offence rate}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X>{\raggedleft}X}
+\hline
+Year & Rate of male & Rate of female\\
+\hline
+2018 & -0.0516427 & -0.0354850\\
+\hline
+2017 & -0.0347731 & -0.0249341\\
+\hline
+2016 & -0.0354036 & -0.0029570\\
+\hline
+2015 & -0.0142071 & 0.0372600\\
+\hline
+2014 & -0.0057571 & 0.0025054\\
+\hline
+2013 & 0.0159161 & 0.0159667\\
+\hline
+2012 & 0.0276546 & 0.0072253\\
+\hline
+2011 & -0.0313991 & -0.0225538\\
+\hline
+2010 & -0.0274735 & -0.0273654\\
+\hline
+2009 & 0.0230747 & 0.0428654\\
+\hline
+\end{tabu}
+\end{table}
+
 Focus on the change on the genders (Refer to Table \ref{tab:gendersumm2}); the rate of both genders offenders is continuously decreasing in recent years.
+
+\begin{table}[H]
+
+\caption{\label{tab:gendersumm3}Difference and change rate on number and rate of offence between 2008 to 2018}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedright}X>{\raggedleft}X>{\raggedleft}X}
+\toprule
+ & Gender & Difference & Growth Rate\\
+\midrule
+Number of Offender & male & 5239.0 & 0.0178715\\
+Number of Offender & female & 13594.0 & 0.1662631\\
+Rate of Offender & male & -408.4 & -0.1292691\\
+Rate of Offender & female & -9.3 & -0.0107452\\
+\bottomrule
+\end{tabu}
+\end{table}
 
 From Table \ref{tab:gendersumm3}, we can conclude that the number of offenders recorded in Australia increased on both males and females from 2008 to 2018. However, the rate of offenders recorded has dropped significantly, and the offence rate of males has decreased more than that of females.
 
@@ -418,6 +509,41 @@ Figure \ref{fig:age1} shows the distribution of offenders across age groups, wit
 ## `summarise()` ungrouping output (override with `.groups` argument)
 ## `summarise()` ungrouping output (override with `.groups` argument)
 \end{verbatim}
+
+\begin{table}[H]
+
+\caption{\label{tab:summary-table}Changes in total offenders}
+\centering
+\begin{tabular}[t]{l|r|r|r|r}
+\hline
+age\_group & Total 2017-2018 & Total 2018-2019 & Difference & Percentage Changes\\
+\hline
+10–14 years & 15239 & 13929 & -1310 & -8.5963646\\
+\hline
+15–19 years & 53835 & 51383 & -2452 & -4.5546578\\
+\hline
+20–24 years & 62138 & 58612 & -3526 & -5.6744665\\
+\hline
+25–29 years & 55171 & 53750 & -1421 & -2.5756285\\
+\hline
+30–34 years & 48311 & 47100 & -1211 & -2.5066755\\
+\hline
+35–39 years & 41982 & 41914 & -68 & -0.1619742\\
+\hline
+40–44 years & 33593 & 33355 & -238 & -0.7084809\\
+\hline
+45–49 years & 27329 & 27507 & 178 & 0.6513228\\
+\hline
+50–54 years & 16767 & 16854 & 87 & 0.5188764\\
+\hline
+55–59 years & 9800 & 9888 & 88 & 0.8979592\\
+\hline
+60–64 years & 5323 & 5565 & 242 & 4.5463085\\
+\hline
+65 years and over & 5808 & 6151 & 343 & 5.9056474\\
+\hline
+\end{tabular}
+\end{table}
 
 An interesting trend to notice from Figure \ref{fig:age-yearly-changes} and Table \ref{tab:summary-table} is that the number of offences for age group below 45 decreased in 2018-2019, while it increased for age group above 45. This is due to the structural ageing that is experienced by all Australian states and territories (\textcite{AIC}). The overall changes however are not that high. Age group 10-14 years has the most significant change which is a decrease of 1310 or around -8.6\%. And the age group with the least change is 35-39 years which is only a decrease of 68. The number of offences commited by middle age groups do not change much.
 
@@ -495,11 +621,121 @@ The figure \ref{fig:sa} also represents the outstanding proportion of 10 Illicit
 
 In the figure \ref{fig:vic}, 02 Acts intended to cause injury resulted in the highest proportion compared to other offences recorded in Victoria's crime statistics.
 
+\begin{table}
+
+\caption{\label{tab:table}Crime statistics 2018 AU}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+State & Proportion\\
+\hline
+NSW & 27.8823529\\
+\hline
+VIC & 20.3036936\\
+\hline
+QLD & 23.6136799\\
+\hline
+SA & 11.1898769\\
+\hline
+WA & 10.7370725\\
+\hline
+TAS & 2.6268126\\
+\hline
+NT & 2.9699042\\
+\hline
+ACT & 0.6766074\\
+\hline
+\end{tabular}
+\end{table}
+
 Furthermore, table \ref{tab:table} also implies the top 4 states accounted for highest proportion of total crime cases recorded in Australia 2018.
 
-\pagebreak
+\section*{Court Actions}
 
-\section*{body 4}
+NT does not have any information about the court action, therefore, in this part of the analysis we exclude the data of North Territory.
+
+The figure \ref{fig:zyliu1} show more offenders will be prosecuted by the court than others. But offenders in SA and TAS have a smaller proportion of criminals result in court action compared to other states in the past ten years. TAS and ACT have the least of the criminals result in court action compared to other states.
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'States' (override with `.groups` argument)
+\end{verbatim}
+
+\begin{figure}
+
+{\centering \includegraphics{ETC5513-Assignment4_files/figure-latex/zyliu1-1} 
+
+}
+
+\caption{Distribution of Offenders by Action type}\label{fig:zyliu1}
+\end{figure}
+
+From Figure \ref{fig:zyliu2} Most types of crime will result in court actions. However, public order offenses and miscellaneous offenses have less possibility to be litigated by the court.
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'Principal offence' (override with `.groups` argument)
+\end{verbatim}
+
+\begin{figure}
+
+{\centering \includegraphics{ETC5513-Assignment4_files/figure-latex/zyliu2-1} 
+
+}
+
+\caption{Distribution of court actions by offence type}\label{fig:zyliu2}
+\end{figure}
+
+The figure \ref{fig:zyliu3} indicate only public order offenses and miscellaneous has less possibility to be litigated by the court. The result in 2018 is not much different from the aggregated data from the past 10 years.
+
+\begin{figure}
+
+{\centering \includegraphics{ETC5513-Assignment4_files/figure-latex/zyliu3-1} 
+
+}
+
+\caption{Court Action of offence type in 2018}\label{fig:zyliu3}
+\end{figure}
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'States' (override with `.groups` argument)
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` regrouping output by 'States', 'Year' (override with `.groups` argument)
+\end{verbatim}
+
+Since NSW QLD and VIC have the most offenders compared to other states, we need to do further analyze the trend of court actions in the past ten years of these states.
+
+According to figure \ref{fig:zyliu4}, from 2007 to 2010 the percentage of criminals result in the court action is decrease. However, after 2010 the percentage of criminals results in the court action is increased. And the difference between the court and non-court actions of offenders become more significant over time.
+
+\begin{figure}
+
+{\centering \includegraphics{ETC5513-Assignment4_files/figure-latex/zyliu4-1} 
+
+}
+
+\caption{Court actions of offenders in VIC}\label{fig:zyliu4}
+\end{figure}
+
+From figure \ref{fig:zyliu5}, in QLD the percentage of offenders results in court, and non-court action is quite stable. In most of years the more than 80\% of offenders will result in court prosecution. Less than 20\% of offenders will not be prosecuted by the court.
+
+\begin{figure}
+
+{\centering \includegraphics{ETC5513-Assignment4_files/figure-latex/zyliu5-1} 
+
+}
+
+\caption{Court actions of offenders in QLD}\label{fig:zyliu5}
+\end{figure}
+
+Accroding to figure \ref{fig:zyliu6}, in NSW before 2010 the percentage of offenders prosecuted by court or not are getting closer. From 2010 to 2012 the percentage of criminals resulting in non-court action is approximate the same as results in court action. After 2012 the percentage of criminals results in the court action is increased. And the difference between the court and non-court actions of offenders become more significant over time.
+
+\begin{figure}
+\centering
+\includegraphics{ETC5513-Assignment4_files/figure-latex/zyliu6-1.pdf}
+\caption{\label{fig:zyliu6}Court actions of offenders in NSW}
+\end{figure}
+
+\pagebreak
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
