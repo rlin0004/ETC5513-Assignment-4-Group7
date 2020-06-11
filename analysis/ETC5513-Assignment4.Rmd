@@ -120,8 +120,6 @@ gender %>%
 As showing in Figure \@ref(fig:gender1), each bar represents the average number of records for each type of offence and gender over the ten years. The overall offence recorded that the number of male offenders is significantly higher than female offenders. The highest number of offence type for males are “Acts intended to cause injury” and for females are “Theft”.  
 
 
->>>>>>> 246c19fc5e2b191eef09926259fac0cd436731a7
-
 ```{r gendersumm}
 gender %>%
   pivot_wider(names_from = sex, values_from = count) %>%
