@@ -1,12 +1,12 @@
 ---
 title: "ETC5513 Assignment 4"
 author:
-- familyname: Yiwen
-  othernames: Jiang
+- familyname: Jiang
+  othernames: Yiwen
   address: Monash Universtidy
   email: yjia0021@student.monash.edu
   correspondingauthor: true
-  qualifications:  BA
+  qualifications:  BComm
 - familyname: Evangelina
   othernames: Helen
   address: Monash University
@@ -39,21 +39,25 @@ output:
     keep_tex: yes
     number_sections: yes
     citation_package: biblatex
-    toc: false
+    toc: true
 ---
 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
-# Make sure you have the latest versions of rmarkdown and bookdown installed
+
 library(ggplot2)
 library(tidyverse)
 library(readxl)
 library(lubridate)
 library(here)
 library(kableExtra)
+library(gridExtra)
+library(knitr)
+library(bookdown)
 ```
 
+\newpage
 
 # Introduction
 The number and rate of offences in Australia are affected by various factors. In recent year, Australia is continually strengthening law enforcement. Although this can reduce the offence rate, the number of offences is also rising with the continuous increase of the population. This report shows the current status of criminal activity in Australia and changes in criminal activity in terms of age, gender, states or territories, and police proceeding.
@@ -65,6 +69,8 @@ Although the status of female offence in modern society is more prominent than i
 For section three, we analyse the crime statistics on states or territories in Australia. The intention is to explore how the primary offences take account in each state or territory in 2018, and which state or territory have competitively higher crime rates. By analysing the crime statistics on states or territories, the report will offer insights on how each state or territory differs on the frequency of primary offences recorded.
 
 Furthermore, in the fourth section, we analyse the court actions of offenders in Australia. The purpose of this section is to investigate the distribution of court and non-court actions of offenders in each state, and which specific crime will be resulting in more court actions than non-court actions.  By analyse the court actions of the criminal, we also provide some detailed explanations and the possible reason to cause this phenomenon.
+
+\newpage
 
 
 # Analysis
@@ -89,7 +95,7 @@ gender_raw <- read_excel(here::here("data/1.+offenders,+australia.xls"), sheet =
 
 
 
-```{r clean gender, echo=FALSE}
+```{r clean gender, echo=FALSE, include=FALSE}
 male_count <- gender_raw[7:22, 1:12] %>%
   mutate(sex = "male")
 female_count <- gender_raw[24:39, 1:12] %>%
@@ -120,6 +126,10 @@ gender %>%
 As showing in Figure \@ref(fig:gender1), each bar represents the average number of records for each type of offence and gender over the ten years. The overall offence recorded that the number of male offenders is significantly higher than female offenders. The highest number of offence type for males are “Acts intended to cause injury” and for females are “Theft”.  
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4de961fb1b8211c2077398a8b3748af9d64ea84a
 ```{r gendersumm}
 gender %>%
   pivot_wider(names_from = sex, values_from = count) %>%
@@ -407,14 +417,6 @@ Figure \@ref(fig:lowestage) illustrates the distribution of total offenders in e
 
 \section*{Crime analysis by State and Territory}
 
-```{r library}
-library(tidyverse)
-library(readxl)
-library(lubridate)
-library(gridExtra)
-library(knitr)
-library(bookdown)
-```
 
  In this section, we are exploring the Australian crime statistics between states/territories. The analysis will be exploring which state has the highest crime rates, and what principal offence accounts for a large proportion.
 
@@ -964,14 +966,26 @@ procced_per %>%
   facet_wrap(~States)
 ```
 
+\pagebreak
+
+
+
+
 # Conclusion
+
 
 The crime offender’s dataset collected by the Australian Bureau of Statistics allows our group to analyse the insight of the crime circumstances in Australia by gender, age group, states/territories, and police proceedings. The number and rate of male offenders recorded in Australia are significantly higher than that of female offenders. Although the number of offences on both genders has increased in recent years, the growth rate in the number of male offenders is lower than that of females. The rate of male offenders has dropped far more than females. Besides, the majority of the proportion of offenders is from younger age groups. One interesting thing is that the number of offences for the age group below 45 decreased in 2018-2019, while it increased for the age group over 45. Even though the total number of offenders differs across age groups, the trend is pretty similar with 10, 2, 13 being the top three highest principal offences. On the other hand, through the visualisations created for crime statistics on states/territories, the report concludes the top 4 states/territories as NSW, QLD, SA, and VIC. The common grounds of these states are, QLD and SA both had ‘Illicit drug offences’ as the most frequent primary offence, whereas, NSW and VIC had ‘Acts intended to cause injury’. Lastly, it can be clearly concluded that most criminals will be prosecuted by the court in all states. But offenders in SA and TAS have a smaller proportion of criminals result in court action compared to other states. Most types of crime will result in court actions. However, public order offenses and miscellaneous offenses have less possibility to be litigated by the court.
 
+<<<<<<< HEAD
 Acknowledgement
+=======
+
+# Acknowledgement
+>>>>>>> 4de961fb1b8211c2077398a8b3748af9d64ea84a
 The dataset used is offenders dataset of Australia (@ABS).
 Packages used are @ggplot2, @tidyverse, @tinytex, @float, @lubridate, @readxl, @kable, @bookdown, @gridExtra, @here, @dplyr, and @readr.
 
+\newpage
 
 # Reference
 
