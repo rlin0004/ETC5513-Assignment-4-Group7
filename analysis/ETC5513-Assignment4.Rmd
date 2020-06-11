@@ -30,7 +30,6 @@ biblio-style: authoryear-comp
 linestretch: 1.5
 output:
   bookdown::pdf_document2:
-    template: monashreport2.tex
     fig_caption: yes
     fig_height: 5
     fig_width: 8
@@ -67,10 +66,11 @@ library(readxl)
 library(dplyr)
 library(readr)
 library(lubridate)
+library(here)
 ```
 
 ```{r import_data4}
-NSW <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+NSW <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 2, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 NSW$`2008–09` =as.double(NSW$`2008–09`)
@@ -83,7 +83,7 @@ NSW <- NSW %>%  pivot_longer(cols = `2008–09`:`2018–19`,
                values_to = "Cases") %>%
    mutate(Year = year(as.Date(Year, "%Y")))
 
-VIC <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+VIC <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 3, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 VIC$`2008–09` =as.double(VIC$`2008–09`)
@@ -96,7 +96,7 @@ VIC <- VIC %>%  pivot_longer(cols = `2008–09`:`2018–19`,
                values_to = "Cases") %>%
    mutate(Year = year(as.Date(Year, "%Y")))
 
-QLD <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+QLD <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 4, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 QLD$`2008–09` =as.double(QLD$`2008–09`)
@@ -109,7 +109,7 @@ QLD <- QLD %>%  pivot_longer(cols = `2008–09`:`2018–19`,
                values_to = "Cases") %>%
    mutate(Year = year(as.Date(Year, "%Y")))
 
-SA <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+SA <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 5, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 SA$`2008–09` =as.double(SA$`2008–09`)
@@ -123,7 +123,7 @@ SA <- SA %>%  pivot_longer(cols = `2008–09`:`2018–19`,
    mutate(Year = year(as.Date(Year, "%Y")))
 
 
-TAS <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+TAS <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 6, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 TAS$`2008–09` =as.double(TAS$`2008–09`)
@@ -137,7 +137,7 @@ TAS <- TAS %>%  pivot_longer(cols = `2008–09`:`2018–19`,
    mutate(Year = year(as.Date(Year, "%Y")))
 
 
-ACT <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
+ACT <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 8, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 ACT$`2008–09` =as.double(ACT$`2008–09`)
@@ -183,7 +183,73 @@ procced %>%
   xlab("Offence type") +
   labs(title = "Distribution of Offenders by offence type") 
 ```
+
+```{r zyliu3}
+procced %>%
+  filter(Year == 2018) %>%
+  ggplot(aes(`Principal offence`, Cases)) +
+  geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("Court Action 2018")+
+  facet_wrap(~Action)
+```
+```{r zyliu_clean}
+procced_year <-procced %>% 
+  group_by(States, Year) %>%
+  summarise(Cases = sum(Cases)) 
+
+procced_action <- procced %>% 
+  group_by(States,Year, Action) %>%
+  summarise(Cases = sum(Cases)) %>%
+  group_by(Year, Action)
+
+procced_per <-procced_action %>% group_by(Action) %>%
+  mutate(Total = procced_year$Cases) %>% 
+  mutate(Percentage = Cases/Total) 
+```
+
+```{r zyliu4}
+procced_per %>%
+  filter(States == "VIC") %>%
+  ggplot(aes(x = Year, y= Percentage, color = Action)) +  
+  theme(legend.position = 'right') +
+  geom_line()+
+  facet_wrap(~States)
+```
+
+```{r zyliu5}
+procced_per %>%
+  filter(States == "QLD") %>%
+  ggplot(aes(x = Year, y= Percentage, color = Action)) +  
+  theme(legend.position = 'right') +
+  geom_line()+
+  facet_wrap(~States)
+```
+```{r zyliu6}
+procced_per %>%
+  filter(States == "NSW") %>%
+  ggplot(aes(x = Year, y= Percentage, color = Action)) +  
+  theme(legend.position = 'right') +
+  geom_line()+
+  facet_wrap(~States)
+```
+```{r zyliu7}
+procced_per %>%
+  filter(States == "SA") %>%
+  ggplot(aes(x = Year, y= Percentage, color = Action)) +  
+  theme(legend.position = 'right') +
+  geom_line()+
+  facet_wrap(~States)
+```
 # Conclusion
 
 # Reference
+\section*{Gender difference in the number and rate of offences}
+
+
+
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                latex_options = "HOLD_position",
+                full_width = T) 
+```
 
