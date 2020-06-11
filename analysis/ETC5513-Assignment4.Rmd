@@ -58,7 +58,7 @@ library(ggplot2)
 
 \section*{body 3}
 
-\section*{Police Proceedings}
+\section*{Court Actions}
 
 ```{r library}
 library(tidyverse)
@@ -70,7 +70,7 @@ library(here)
 ```
 
 ```{r import_data4}
-NSW <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
+NSW <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 2, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 NSW$`2008–09` =as.double(NSW$`2008–09`)
@@ -83,7 +83,7 @@ NSW <- NSW %>%  pivot_longer(cols = `2008–09`:`2018–19`,
                values_to = "Cases") %>%
    mutate(Year = year(as.Date(Year, "%Y")))
 
-VIC <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
+VIC <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 3, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 VIC$`2008–09` =as.double(VIC$`2008–09`)
@@ -96,7 +96,7 @@ VIC <- VIC %>%  pivot_longer(cols = `2008–09`:`2018–19`,
                values_to = "Cases") %>%
    mutate(Year = year(as.Date(Year, "%Y")))
 
-QLD <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
+QLD <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 4, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 QLD$`2008–09` =as.double(QLD$`2008–09`)
@@ -109,7 +109,7 @@ QLD <- QLD %>%  pivot_longer(cols = `2008–09`:`2018–19`,
                values_to = "Cases") %>%
    mutate(Year = year(as.Date(Year, "%Y")))
 
-SA <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
+SA <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 5, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 SA$`2008–09` =as.double(SA$`2008–09`)
@@ -123,7 +123,7 @@ SA <- SA %>%  pivot_longer(cols = `2008–09`:`2018–19`,
    mutate(Year = year(as.Date(Year, "%Y")))
 
 
-TAS <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
+TAS <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 6, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 TAS$`2008–09` =as.double(TAS$`2008–09`)
@@ -137,7 +137,7 @@ TAS <- TAS %>%  pivot_longer(cols = `2008–09`:`2018–19`,
    mutate(Year = year(as.Date(Year, "%Y")))
 
 
-ACT <- read_excel(here::here("Assignment 4/data/5. police proceedings, selected states and territories.xls"), 
+ACT <- read_excel(here::here("data/5. police proceedings, selected states and territories.xls"), 
                       sheet = 8, range = "A6:L39") %>% 
   dplyr::filter(!is.na(`Principal offence`))
 ACT$`2008–09` =as.double(ACT$`2008–09`)
@@ -155,8 +155,11 @@ procced <- bind_rows(NSW, VIC, QLD, SA, TAS, ACT) %>%
   dplyr::filter(!is.na(Cases))
   
 ```
+NT does not have any information about the court action, therefore, in this part of the analysis we exclude the data of North Territory. 
 
-```{r zyliu1, fig.cap="Distribution of Offenders by Action type"}
+The figure \@ref(fig:zyliu1) show more offenders will be prosecuted by the court than others. But offenders in SA and TAS have a smaller proportion of criminals result in court action compared to other states in the past ten years. TAS and ACT have the least of the criminals result in court action compared to other states.
+
+```{r zyliu1, fig.cap="Distribution of Offenders by Action type", fig.align='center'}
 procced %>% 
   group_by(States, Action) %>%
   summarise(Cases = sum(Cases)) %>%
@@ -167,10 +170,12 @@ procced %>%
   theme(axis.text.x = element_text(hjust = 1)) +
   ylab("Total Number of Offences") +
   xlab("States") +
-  labs(title = "Distribution of Offenders by Action type")
+  labs(title = "Distribution of Offenders by Action type in eash state")
 ```
+From Figure \@ref(fig:zyliu2) Most types of crime will result in court actions. However, public order offenses and miscellaneous offenses have less possibility to be litigated by the court. 
 
-```{r zyliu2, fig.cap="Distribution of Offenders by Offence type"}
+
+```{r zyliu2, fig.cap="Distribution of court actions by offence type",fig.height= 10, fig.align='center'}
 procced %>% 
   group_by(`Principal offence`, Action) %>%
   summarise(Cases = sum(Cases)) %>%
@@ -181,16 +186,17 @@ procced %>%
   theme(axis.text.x = element_text(angle = 70, hjust = 1)) +
   ylab("Total Number of Offences") +
   xlab("Offence type") +
-  labs(title = "Distribution of Offenders by offence type") 
+  labs(title = "Distribution of court actions by offence type") 
 ```
 
-```{r zyliu3}
+The figure \@ref(fig:zyliu3) indicate only public order offenses and miscellaneous has less possibility to be litigated by the court. The result in 2018 is not much different from the aggregated data from the past 10 years.
+```{r zyliu3, fig.align='center', fig.cap="Court Action of offence type in 2018"}
 procced %>%
   filter(Year == 2018) %>%
   ggplot(aes(`Principal offence`, Cases)) +
   geom_col(aes(group = `Principal offence`, fill = `Principal offence`)) +
   theme(axis.text.x = element_blank()) +
-  ggtitle("Court Action 2018")+
+  ggtitle("Court Action of offence type in 2018")+
   facet_wrap(~Action)
 ```
 ```{r zyliu_clean}
@@ -207,8 +213,10 @@ procced_per <-procced_action %>% group_by(Action) %>%
   mutate(Total = procced_year$Cases) %>% 
   mutate(Percentage = Cases/Total) 
 ```
+Since NSW QLD and VIC have the most offenders compared to other states, we need to do further analyze the trend of court actions in the past ten years of these states. 
 
-```{r zyliu4}
+According to figure \@ref(fig:zyliu4), from 2007 to 2010 the percentage of criminals result in the court action is decrease. However, after 2010 the percentage of criminals results in the court action is increased. And the difference between the court and non-court actions of offenders become more significant over time.
+```{r zyliu4, fig.cap="Court actions of offenders in VIC", fig.align='center'}
 procced_per %>%
   filter(States == "VIC") %>%
   ggplot(aes(x = Year, y= Percentage, color = Action)) +  
@@ -216,8 +224,8 @@ procced_per %>%
   geom_line()+
   facet_wrap(~States)
 ```
-
-```{r zyliu5}
+From figure \@ref(fig:zyliu5), in QLD the percentage of offenders results in court, and non-court action is quite stable. In most of years the more than 80% of offenders will result in court prosecution. Less than 20% of offenders will not be prosecuted by the court.
+```{r zyliu5, fig.cap="Court actions of offenders in QLD", fig.align='center'}
 procced_per %>%
   filter(States == "QLD") %>%
   ggplot(aes(x = Year, y= Percentage, color = Action)) +  
@@ -225,7 +233,10 @@ procced_per %>%
   geom_line()+
   facet_wrap(~States)
 ```
-```{r zyliu6}
+Accroding to figure \@ref(fig:zyliu6), in NSW before 2010 the percentage of offenders prosecuted by court or not are getting closer. From 2010 to 2012 the percentage of criminals resulting in non-court action is approximate the same as results in court action. After 2012 the percentage of criminals results in the court action is increased. And the difference between the court and non-court actions of offenders become more significant over time.
+
+
+```{r zyliu6, fig.cap="Court actions of offenders in NSW", fig.align='default'}
 procced_per %>%
   filter(States == "NSW") %>%
   ggplot(aes(x = Year, y= Percentage, color = Action)) +  
@@ -233,23 +244,9 @@ procced_per %>%
   geom_line()+
   facet_wrap(~States)
 ```
-```{r zyliu7}
-procced_per %>%
-  filter(States == "SA") %>%
-  ggplot(aes(x = Year, y= Percentage, color = Action)) +  
-  theme(legend.position = 'right') +
-  geom_line()+
-  facet_wrap(~States)
-```
+
 # Conclusion
 
 # Reference
-\section*{Gender difference in the number and rate of offences}
 
-
-
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
-                latex_options = "HOLD_position",
-                full_width = T) 
-```
 
