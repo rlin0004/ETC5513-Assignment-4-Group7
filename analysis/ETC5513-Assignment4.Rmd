@@ -13,10 +13,10 @@ author:
   email: heva0001@student.monash.edu
   correspondingauthor: true
   qualifications: BComm
-- familyname: XXXX
-  othernames: Reports
-  address: XXX
-  qualifications: XXX
+- familyname: Lin
+  othernames: Ruimin
+  address: Monash University
+  qualifications: BComm
 - familyname: XXX
   othernames: XXX
   address: XXX
@@ -25,7 +25,6 @@ author:
   qualifications:  XXX
 department: Our consultancy \newline add names &\newline add names
 organization: Australian Bureau of Statistic
->>>>>>> 246c19fc5e2b191eef09926259fac0cd436731a7
 bibliography: references.bib
 biblio-style: authoryear-comp
 linestretch: 1.5
