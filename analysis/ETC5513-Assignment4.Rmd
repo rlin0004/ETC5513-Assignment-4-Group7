@@ -1,23 +1,36 @@
 ---
-title: "ETC5513 Assignment4 Group7"
+title: "ETC5513 Assignment 4"
 author:
-- familyname: xxxxx
-  othernames: xxxxx
-  address: Monash University
+- familyname: Yiwen
+  othernames: Jiang
+  address: Monash Universtidy
+  email: yjia0021@student.monash.edu
   correspondingauthor: true
-- familyname: xxx
-  othernames: xxx
+  qualifications:  BA
+- familyname: Evangelina
+  othernames: Helen
   address: Monash University
-- familyname: xxx
-  othernames: xxx
+  email: heva0001@student.monash.edu
+  correspondingauthor: true
+  qualifications: BComm
+- familyname: Lin
+  othernames: Ruimin
   address: Monash University
-department: Department of\newline Econometrics &\newline Business Statistics
-organization: Acme Corporation
+  qualifications: BComm
+- familyname: liu
+  othernames: Zeyu
+  address: Monash University
+  email: zyliu16@student.monash.edu
+  correspondingauthor: true
+  qualifications:  BComm
+department: Our consultancy \newline add names &\newline add names
+organization: Australian Bureau of Statistic
 bibliography: references.bib
 biblio-style: authoryear-comp
 linestretch: 1.5
 output:
-  MonashEBSTemplates::report:
+  bookdown::pdf_document2:
+    template: monashreport2.tex
     fig_caption: yes
     fig_height: 5
     fig_width: 8
